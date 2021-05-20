@@ -6,6 +6,7 @@ import SignIn from '../../views/Auth/SignIn';
 import Home from '../Home';
 
 export default () => {
+  const token = '';
   const publicRoutes = (
     <Container>
       <Switch>
