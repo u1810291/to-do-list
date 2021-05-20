@@ -21,7 +21,6 @@ export default () => (
             title={title}
             icon={icon}
             path={path}
-            
             elements={children}
           />
         ) : null)

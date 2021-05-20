@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const Header = styled.div`
     z-index:10;
     grid-area: header;
@@ -16,3 +15,5 @@ export const TitleContainer = styled.div`
     justify-content: center;
     align-items: center;
 `;
+
+export const Image = styled.img``;
