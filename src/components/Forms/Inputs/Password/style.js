@@ -8,6 +8,7 @@ export const Input = styled.input`
   border-radius: ${getBorderRadius};
   background: ${({ white }) => (white ? '#ffffff' : '#F5F5F5')};
 `;
+
 export const Helper = styled.div`
   ${helperText}
 `;
