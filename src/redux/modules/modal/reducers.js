@@ -16,8 +16,6 @@ const map = {
     blured: { show: true, ...payload }
   }),
   [types.APPLICATION_HIDE_MODAL]: (state) => ({ ...state, blured: { show: false } }),
-  // [types.APPLICATION_SHOW_FULLSCREEN_MODAL]: (state, { payload }) => ({ ...state, fullScreen: { show: true, ...payload } }),
-  // [types.APPLICATION_HIDE_FULLSCREEN_MODAL]: (state) => ({ ...state, fullScreen: { show: false } }),
   [types.APPLICATION_PUSH_STACK_FULLSCREEN_MODAL]: (state, { payload }) => ({
     ...state, fullScreen: { stack: [...state.fullScreen.stack, payload] }
   }),
