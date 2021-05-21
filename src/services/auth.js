@@ -1,5 +1,5 @@
 import { service } from '.';
 
 export default {
-  login: () => service.post('')
+  login: (data) => service.post('login', data)
 };

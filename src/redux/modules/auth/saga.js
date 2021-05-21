@@ -9,10 +9,12 @@ import {
 
 function* login({ payload, success }) {
   try {
-    const { data } = yield service.getToken(payload);
-    yield put(setToken(payload.token));
-    success(data.access_token, data.refresh_token);
+    const { data } = yield service.login(payload);
+    yield put(setToken(payload));
+    console.log(data);
+    success(data);
   } catch (error) {
+    console.log(error);
     yield put(setError(error.response ? error.response.data.error_message : error));
   }
 }

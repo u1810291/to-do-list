@@ -17,6 +17,7 @@ export const useHandleSubmit = () => {
       password: Yup.string().required('Password is required')
     }),
     onSubmit: (values, { setSubmitting }) => {
+      console.log('values');
       setSubmitting(true);
       dispatch(login(values, () => {
         setSubmitting(false);
