@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Container from '../../components/Container';
+import { Container } from './style';
 import SignIn from '../../views/Auth/SignIn';
 import Home from '../Home';
 

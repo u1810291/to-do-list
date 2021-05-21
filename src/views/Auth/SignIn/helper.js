@@ -9,11 +9,11 @@ export const useHandleSubmit = () => {
   const history = useHistory();
   const formik = useFormik({
     initialValues: {
-      email: '',
+      username: '',
       password: ''
     },
     validationSchema: Yup.object({
-      email: Yup.string().email().required('Email is required'),
+      username: Yup.string().email().required('Username is required'),
       password: Yup.string().required('Password is required')
     }),
     onSubmit: (values, { setSubmitting }) => {
