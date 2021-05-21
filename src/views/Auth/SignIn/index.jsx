@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NormalInput } from '../../../components/Forms/Inputs';
+import { NormalInput, PasswordInput } from '../../../components/Forms/Inputs';
 import { PrimaryButton } from '../../../components/Buttons';
 import { useHandleSubmit } from './helper';
 import { AuthContainer } from './style';
@@ -17,7 +17,7 @@ export default () => {
         value={formik.values.username}
         onChange={(e) => formik.setFieldValue('username', e.target.value)}
       />
-      <NormalInput
+      <PasswordInput
         size="small"
         placeholder="Password"
         type={formik.touched.password && formik.errors.password && 'error'}
