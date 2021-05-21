@@ -1,13 +1,14 @@
 import React from 'react';
 
 import { NormalInput } from '../../../components/Forms/Inputs';
+import { PrimaryButton } from '../../../components/Buttons';
 import { useHandleSubmit } from './helper';
 import { AuthContainer } from './style';
 
 export default () => {
   const { formik } = useHandleSubmit();
   return (
-    <AuthContainer>
+    <AuthContainer onSubmit={formik.handleSubmit}>
       <NormalInput
         size="small"
         placeholder="Username"
@@ -24,6 +25,7 @@ export default () => {
         value={formik.values.password}
         onChange={(e) => formik.setFieldValue('password', e.target.value)}
       />
+      <PrimaryButton size="small" title="login" type="submit" />
     </AuthContainer>
   );
 };
