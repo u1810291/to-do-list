@@ -18,9 +18,9 @@ export const useHandleSubmit = () => {
     }),
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
-      dispatch(login(values, () => {
+      dispatch(login(values, (res) => {
         setSubmitting(false);
-        history.push('/');
+        if (res) history.push('/');
       }));
     }
   });

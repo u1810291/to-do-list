@@ -2,18 +2,29 @@
 import types from '../../../constants/action-types';
 
 const defaultState = {
-  token: ''
+  token: localStorage.getItem('token'),
+  error: ''
 };
 
 const map = {
-  [types.AUTH_LOGOUT]: (state) => ({
-    ...state, token: ''
-  }),
-  [types.AUTH_ERROR]: (state, { payload }) => ({ ...state, error: payload }),
-  [types.AUTH_SET_TOKEN]: (state, { payload }) => ({
+  [types.AUTH_LOGOUT]: (state) => {
+    localStorage.setItem('token', '');
+    return {
+      ...state, token: ''
+    };
+  },
+  [types.AUTH_ERROR]: (state, { payload }) => ({
     ...state,
-    token: payload
-  })
+    error: payload
+  }),
+  [types.AUTH_SET_TOKEN]: (state, { payload }) => {
+    localStorage.setItem('token', payload);
+    return {
+      ...state,
+      token: payload
+
+    };
+  }
 };
 
 // eslint-disable-next-line max-len
