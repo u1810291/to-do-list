@@ -1,5 +1,5 @@
 import { useFormik } from 'formik';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { login } from '../../../redux/modules/auth/actions';
@@ -20,7 +20,7 @@ export const useHandleSubmit = () => {
       setSubmitting(true);
       dispatch(login(values, (res) => {
         setSubmitting(false);
-        if (res) history.push('/');
+        if (res) history.go('/');
       }));
     }
   });

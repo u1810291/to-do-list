@@ -18,11 +18,10 @@ const map = {
     error: payload
   }),
   [types.AUTH_SET_TOKEN]: (state, { payload }) => {
-    localStorage.setItem('token', payload);
+    localStorage.setItem('token', 'payload');
     return {
       ...state,
       token: payload
-
     };
   }
 };
