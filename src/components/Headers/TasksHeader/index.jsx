@@ -4,6 +4,6 @@ import { Container } from './style';
 
 export default () => (
   <Container>
-    Header
+    Header4
   </Container>
 );
