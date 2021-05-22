@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import {
   Container,
   UserInfoContainer,
@@ -25,13 +25,14 @@ export default () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOnClick = (type) => {
     switch (type) {
-    case 'profile':
+    case 'tasks':
       setIsOpen(false);
-      history.push('/tasks');
+      history.go('/tasks');
       break;
     case 'logout':
       setIsOpen(false);
       dispatch(logout());
+      history.go('/signin');
       break;
     default:
       break;
@@ -60,7 +61,7 @@ export default () => {
               }}
             >
               <DropdownContainer isOpen={isOpen}>
-                <Item onClick={() => handleOnClick('profile')}>
+                <Item onClick={() => handleOnClick('tasks')}>
                   <Text className={classNames('caption', 'weight-semibold', 'text-black-800')}>Tasks</Text>
                 </Item>
                 <Item onClick={() => handleOnClick('logout')}>
