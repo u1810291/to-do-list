@@ -1,7 +1,7 @@
 /* eslint-disable no-alert */
 import axios from 'axios';
 
-const baseURL = process.env.TO_DO_LIST_API_BASE_URL;
+const baseURL = process.env.REACT_APP_SERVICE_URL;
 const service = axios.create({ baseURL });
 
 service.interceptors.response.use(
