@@ -1,10 +1,7 @@
 /* eslint-disable no-alert */
-/* eslint-disable no-param-reassign */
-/* eslint-disable camelcase */
 import axios from 'axios';
 
-const baseURL = process.env.REACT_APP_SERVICE_URL;
-
+const baseURL = process.env.TO_DO_LIST_API_BASE_URL;
 const service = axios.create({ baseURL });
 
 service.interceptors.response.use(
@@ -18,10 +15,7 @@ service.interceptors.response.use(
   }
 );
 
-service.interceptors.request.use((config) => {
-  const access_token = sessionStorage.getItem('access_token');
-  config.headers.Authorization = `Bearer ${access_token}`;
-  return config;
-});
-
+service.interceptors.request.use((config) => config);
+// const token = sessionStorage.getItem('token');
+// config.headers.Authorization = `Bearer ${token}`;
 export { service };

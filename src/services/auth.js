@@ -1,5 +1,5 @@
 import { service } from '.';
 
 export default {
-  login: (data) => service.post('login', data)
+  login: (data) => { console.log(data); service.post('/login', data); }
 };
