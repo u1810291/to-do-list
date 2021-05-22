@@ -27,7 +27,7 @@ export default () => {
     switch (type) {
     case 'profile':
       setIsOpen(false);
-      history.push('/tasks');
+      history.push('/');
       break;
     case 'logout':
       setIsOpen(false);
