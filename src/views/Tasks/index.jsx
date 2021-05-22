@@ -1,9 +1,10 @@
 import React from 'react';
 
 import Tasks from '../../components/Tasks';
+import { Container } from './style';
 
 export default () => (
-  <div>
+  <Container>
     <Tasks />
-  </div>
+  </Container>
 );
