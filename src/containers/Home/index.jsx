@@ -1,7 +1,9 @@
 import React from 'react';
+import Container from '../../components/Container';
+import Content from '../../components/Content';
 
 export default () => (
-  <div>
-    Home
-  </div>
+  <Container>
+    <Content />
+  </Container>
 );

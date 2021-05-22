@@ -9,8 +9,8 @@ const common = css`
 
 const tabletDesktop = css`
   ${common};
-  grid-template-areas: "sidebar content";
-  grid-template-columns: auto 1fr;
+  grid-template-areas: "content";
+  grid-template-columns: 1fr;
 `;
 
 export const Container = styled.div`
