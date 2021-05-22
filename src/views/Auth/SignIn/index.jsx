@@ -7,7 +7,6 @@ import { AuthContainer } from './style';
 
 export default () => {
   const { formik } = useHandleSubmit();
-  console.log(process.env);
   return (
     <AuthContainer onSubmit={formik.handleSubmit}>
       <NormalInput

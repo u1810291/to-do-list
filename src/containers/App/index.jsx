@@ -1,12 +1,14 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
 import { Container } from './style';
 import SignIn from '../../views/Auth/SignIn';
 import Home from '../Home';
 
 export default () => {
-  const token = '';
+  const { token } = useSelector((state) => state.authReducer);
+  console.log(token);
   const publicRoutes = (
     <Container>
       <Switch>

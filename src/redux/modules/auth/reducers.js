@@ -11,7 +11,8 @@ const map = {
   }),
   [types.AUTH_ERROR]: (state, { payload }) => ({ ...state, error: payload }),
   [types.AUTH_SET_TOKEN]: (state, { payload }) => ({
-    ...state, access_token: payload
+    ...state,
+    token: payload
   })
 };
 
