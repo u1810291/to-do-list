@@ -1,15 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ReactComponent as NotificationIcon } from '../../assets/icons/navbar-notification.svg';
-import { ReactComponent as ChatIcon } from '../../assets/icons/navbar-chat.svg';
 import { ReactComponent as MenuIcon } from '../../assets/icons/menu.svg';
-import { device } from '../../utils/responsive';
-
-const fixedNav = css`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-`;
 
 const sharedContainer = css`
   height: var(--navbar-height);
@@ -19,12 +9,6 @@ const sharedContainer = css`
   display: flex;
   align-items: center;
   z-index: 5;
-  @media ${device.mobile} {
-    ${fixedNav}
-  }
-  @media ${device.tablet} {
-    ${fixedNav}
-  }
 `;
 
 export const Container = styled.div`
@@ -38,9 +22,9 @@ export const MContainer = styled.div`
 `;
 
 export const Content = styled.div`
-  margin: 0 0;
   display: flex;
   align-items: center;
+  padding-top:10px;
 `;
 
 export const Image = styled.div`
@@ -64,8 +48,6 @@ export const Title = styled.span`
   color: ${({ primary }) => (primary ? '#7E8299' : '#B5B5C3')};
 `;
 
-export const ChatButton = styled(ChatIcon)``;
-export const NotificationButton = styled(NotificationIcon)``;
 export const MenuButton = styled(MenuIcon)`
   margin-right: 10px;
   cursor: pointer;

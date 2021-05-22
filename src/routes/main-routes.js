@@ -4,10 +4,10 @@ import Dashboard from '../views/Dashboard';
 export default [
   {
     exact: true,
-    path: '/dashboard',
+    path: '/tasks',
     component: Dashboard,
-    icon: 'dashboard',
-    title: 'Рўйхат',
+    icon: 'tasks',
+    title: 'Tasks',
     children: []
   }
 ];

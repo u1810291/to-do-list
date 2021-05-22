@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 export const Header = styled.div`
   display: flex;
@@ -25,21 +25,22 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding-top: 20px;
 `;
 
 export const UserInfoContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
 `;
 
 export const DropdownContainer = styled.div`
   display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
-  padding: 16px 24px;
+  padding: 16px 24px  ;
+  align-items: center;
   flex-direction: column;
   position: absolute;
   top: 100%;
+  left:-20px;
   box-shadow: 0 6px 12px rgba(73, 75, 116, 0.16);
   border-radius: 8px;
   overflow: hidden;
