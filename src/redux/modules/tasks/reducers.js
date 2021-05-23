@@ -4,7 +4,8 @@ const defaultState = {
   data: [],
   error: '',
   loading: false,
-  total: undefined
+  total: undefined,
+  success: ''
 };
 
 const map = {
@@ -19,6 +20,10 @@ const map = {
   [types.SET_TASKS_LOADING]: (state, { payload }) => ({
     ...state,
     loading: payload
+  }),
+  [types.SET_TASKS_ADD_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    success: payload
   }),
   [types.SET_TASKS_TOTAL]: (state, { payload }) => ({
     ...state,

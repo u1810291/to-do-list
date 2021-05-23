@@ -26,7 +26,7 @@ const Item = ({
           </CloseButton>
         </div>
         <Caption className={caption}>{message}</Caption>
-        <Time className={caption}>{moment(new Date()).format('LT')}</Time>
+        <Time className={caption}>{moment(new Date()).format('HH:mm:ss')}</Time>
       </Wrapper>
     </Container>
   );

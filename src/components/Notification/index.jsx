@@ -10,6 +10,8 @@ import { Container } from './style';
 
 const Notifications = () => {
   const { items } = useSelector((state) => state.notificationsReducer);
+  const nodeRef = React.useRef(null);
+
   return (
     <Container>
       <TransitionGroup className="notification-list">
@@ -18,6 +20,7 @@ const Notifications = () => {
             <CSSTransition
               key={item.id}
               timeout={250}
+              nodeRef={nodeRef}
               classNames="notification-item"
             >
               <Item {...item} />
