@@ -17,12 +17,12 @@ const Item = ({
   return (
     <Container className={classname} icon={icon}>
       <div>
-        Icon
+        {icon}
       </div>
       <Wrapper>
         <div>
           <CloseButton onClick={() => dispatch(closeNotify(id))}>
-            Icon
+            {icon}
           </CloseButton>
         </div>
         <Caption className={caption}>{message}</Caption>
