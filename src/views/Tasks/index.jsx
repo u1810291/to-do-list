@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
 
+import { useSelector } from 'react-redux';
 import Tasks from '../../components/Tasks';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
@@ -9,6 +10,8 @@ export default () => {
   const [pageIndex, setPageIndex] = useState();
   const [pageSize, setPageSize] = useState();
   const [sort, setSort] = useState();
+  const { error } = useSelector((state) => state.tasksReducer);
+  console.log(error);
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found

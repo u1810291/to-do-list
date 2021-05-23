@@ -12,7 +12,7 @@ export const fetchData = (payload, success) => ({
 });
 
 export const addTask = (payload, success) => ({
-  type: types.FETCH_TASKS,
+  type: types.ADD_TASKS,
   payload,
   success
 });

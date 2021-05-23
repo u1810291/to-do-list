@@ -8,8 +8,8 @@ import {
 import Item from './Item';
 import { Container } from './style';
 
-export default () => {
-  const { items } = useSelector((state) => state.notificationReducer);
+const Notifications = () => {
+  const { items } = useSelector((state) => state.notificationsReducer);
   return (
     <Container>
       <TransitionGroup className="notification-list">
@@ -28,3 +28,5 @@ export default () => {
     </Container>
   );
 };
+
+export default Notifications;

@@ -10,7 +10,7 @@ import { closeNotify } from '../../../redux/modules/notifications/actions';
 const classname = classNames('border-primary', 'white-900', 'shadow-primary-3');
 const caption = classNames('button-large', 'text-white-900', 'weight-regular');
 
-export default ({
+const Item = ({
   id, message, icon
 }) => {
   const dispatch = useDispatch();
@@ -31,3 +31,5 @@ export default ({
     </Container>
   );
 };
+
+export default Item;

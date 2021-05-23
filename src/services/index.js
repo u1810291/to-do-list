@@ -11,6 +11,7 @@ service.interceptors.response.use(
     if (parseInt(status, 10) === 401) {
       alert('Login or password is incorrect');
     }
+    console.log('error', error);
     return Promise.reject(error);
   }
 );
