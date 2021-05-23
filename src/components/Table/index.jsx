@@ -41,7 +41,7 @@ const headerClass = classNames(
 );
 
 const CustomCheckbox = ({
-  row, setStack, shouldCheck, stack
+  row, setStack, stack
 }) => (
   <CheckBox
     type="checkbox"
@@ -173,7 +173,7 @@ const CustomTable = ({
                             ref={refClick}
                             onClick={() => setOpenH(!openH)}
                           >
-                            <ButtonIcon color="#9D9D9D" icon="buttom" />
+                            Menu
                           </MenuButton>
                         </Cell>
                       </TH>

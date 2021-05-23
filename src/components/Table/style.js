@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Scrollable from 'react-indiana-drag-scroll';
-import { PureCheckbox } from '../Checkbox';
+import { PureCheckbox } from '../CheckBox';
 
 const upArrowIcon = css`
   width: 0;
