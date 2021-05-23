@@ -130,10 +130,10 @@ export const TBody = styled.tbody`
     background: white;
   }
   & ${TR}:hover {
-    background: #ffe9ed;
+    background: #e2ebf9;
   }
   & ${TR}:hover ${TD} {
-    background: #ffe9ed;
+    background: #e2ebf9;
   }
   & ${TR}:hover ${CheckBox}:not(:checked) {
     background: white;

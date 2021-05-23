@@ -37,18 +37,22 @@ export default () => {
   const header = [
     {
       id: 1,
+      Header: 'ID',
       accessor: 'id'
     },
     {
       id: 2,
+      Header: 'Email',
       accessor: 'email'
     },
     {
       id: 3,
+      Header: 'Description',
       accessor: 'description'
     },
     {
       id: 4,
+      Header: 'Status',
       accessor: 'status'
     }
   ];

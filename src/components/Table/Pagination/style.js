@@ -3,14 +3,27 @@ import styled from 'styled-components';
 import { ReactComponent as Right } from '../../../assets/icons/next.svg';
 import { ReactComponent as Left } from '../../../assets/icons/prev.svg';
 
-export const IconLeft = styled(Right)``;
-export const IconRight = styled(Left)``;
+export const IconLeft = styled(Right)`
+  svg{
+    path{
+      fill: ${({ color }) => color && color}
+    }
+  }
+  `;
+export const IconRight = styled(Left)`
+  svg{
+    path{
+      fill: ${({ color }) => color && color}
+    }
+  }
+`;
 
 export const Container = styled.div`
   display: flex;
   margin-top: 16px;
   justify-content: flex-end;
-  grid-gap: 13px;
+  gap: 13px;
+  max-width: 100%;
 `;
 
 export const PageButtons = styled.div`
@@ -20,7 +33,6 @@ export const PageButtons = styled.div`
   height: 43px;
   display: grid;
   overflow: hidden;
-  grid-template-columns: ${({ repeat }) => (repeat ? `repeat(${repeat}, 1fr)` : 'repeat(7, 1fr)')};
 `;
 
 export const Button = styled.button`
@@ -28,7 +40,7 @@ export const Button = styled.button`
   border-radius: 0;
   background: white;
   color: black;
-  min-width: calc(300px / 7);
+  min-width: 50px;
   cursor: pointer;
   &:hover {
     background: ${({ active }) => !active && '#f5f5f5'};
@@ -44,8 +56,9 @@ export const Button = styled.button`
 `;
 
 export const ChangeButtons = styled.div`
-  width: 90px;
+  width: 50px;
   height: 43px;
+  
   border-radius: 8px;
   background-color: white;
   display: grid;
@@ -54,9 +67,12 @@ export const ChangeButtons = styled.div`
 `;
 
 export const ChangeButton = styled.button`
-  background: transparent;
   border: none;
   cursor: pointer;
+  background: #e2ebf9 !important;
+  &:hover{
+    background: #bdd3f5 !important;
+  }
   &:focus {
     outline: none;
   }

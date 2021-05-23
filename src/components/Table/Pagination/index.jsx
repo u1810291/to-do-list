@@ -46,7 +46,7 @@ const Pagination = ({
         onChange={setPageSize}
         size="large"
       />
-      <PageButtons repeat={pageCount > 7 ? 7 : pageCount}>
+      <PageButtons repeat={pageCount > 3 ? 3 : pageCount}>
         {buttons.map((title, index) => (
           <Button
             key={`${index + 1}`}

@@ -4,14 +4,18 @@ import { dropdown } from '../style';
 export const Container = styled.div`
   display: flex;
   flex-direction:${({ end }) => (end ? 'column-reverse' : 'column')};
-  width: 100%;
+  width: 200px;
+
 `;
 
 export const Selection = styled.div`
   ${dropdown}
   display: flex;
   border-radius: 8px;
-  background: ${({ background }) => (background ? 'white' : '#f5f5f5')};
+  background: #e2ebf9 !important;
+  &:hover{
+    background: #bdd3f5 !important;
+  }
   cursor: pointer;
   overflow: hidden;
   box-sizing: border-box;
