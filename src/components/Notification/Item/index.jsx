@@ -5,7 +5,6 @@ import moment from 'moment';
 import {
   Container, Wrapper, CloseButton, Time, Caption
 } from './style';
-import Icon from '../../Icon';
 import { closeNotify } from '../../../redux/modules/notifications/actions';
 
 const classname = classNames('border-primary', 'white-900', 'shadow-primary-3');
@@ -18,12 +17,12 @@ export default ({
   return (
     <Container className={classname} icon={icon}>
       <div>
-        <Icon icon={icon} size="26px" color="#FFFFFF" />
+        Icon
       </div>
       <Wrapper>
         <div>
           <CloseButton onClick={() => dispatch(closeNotify(id))}>
-            <Icon icon="cross" size="10px" color="#FFFFFF" />
+            Icon
           </CloseButton>
         </div>
         <Caption className={caption}>{message}</Caption>
