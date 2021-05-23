@@ -4,14 +4,18 @@ import { dropdown } from '../style';
 export const Container = styled.div`
   display: flex;
   flex-direction:${({ end }) => (end ? 'column-reverse' : 'column')};
-  width: 100%;
+  width: 200px;
+
 `;
 
 export const Selection = styled.div`
   ${dropdown}
   display: flex;
   border-radius: 8px;
-  background: ${({ background }) => (background ? 'white' : '#f5f5f5')};
+  background: #e2ebf9 !important;
+  &:hover{
+    background: #bdd3f5 !important;
+  }
   cursor: pointer;
   overflow: hidden;
   box-sizing: border-box;
@@ -22,10 +26,17 @@ Selection.Text = styled.div`
   letter-spacing: 0.01em;
   line-height: 24px;
   text-align: left;
-  color: ${({ color }) => (color || '#9D9D9D')};
+  color: ${({ color }) => (color || '#0062FF')};
   `;
 Selection.Icon = styled.div`
   margin-left: auto;
+  svg{
+    path{
+
+      fill: #0062FF !important;
+    }
+  }
+
 `;
 
 export const Menu = styled.div`

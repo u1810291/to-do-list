@@ -1,0 +1,31 @@
+<svg id="Spinner" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <g id="Group_348" data-name="Group 348" transform="translate(-942 -483)">
+    <circle id="Ellipse_48" data-name="Ellipse 48" cx="4" cy="4" r="4" transform="translate(956 483)" fill="#fff"/>
+    <circle id="Ellipse_37" data-name="Ellipse 37" cx="4" cy="4" r="4" transform="translate(956 483)" fill="rgba(246,78,96,0.5)"/>
+  </g>
+  <circle id="Ellipse_38" data-name="Ellipse 38" cx="4" cy="4" r="4" transform="translate(14 28)" fill="#f64e60"/>
+  <g id="Group_347" data-name="Group 347" transform="translate(-942 -483)">
+    <circle id="Ellipse_49" data-name="Ellipse 49" cx="4" cy="4" r="4" transform="translate(969.899 485.444) rotate(45)" fill="#fff"/>
+    <circle id="Ellipse_39" data-name="Ellipse 39" cx="4" cy="4" r="4" transform="translate(969.899 485.444) rotate(45)" fill="rgba(246,78,96,0.62)"/>
+  </g>
+  <g id="Group_346" data-name="Group 346" transform="translate(-942 -483)">
+    <circle id="Ellipse_46" data-name="Ellipse 46" cx="4" cy="4" r="4" transform="translate(950.101 505.243) rotate(45)" fill="#fff"/>
+    <circle id="Ellipse_40" data-name="Ellipse 40" cx="4" cy="4" r="4" transform="translate(950.101 505.243) rotate(45)" fill="rgba(246,78,96,0.12)"/>
+  </g>
+  <g id="Group_345" data-name="Group 345" transform="translate(-942 -483)">
+    <circle id="Ellipse_50" data-name="Ellipse 50" cx="4" cy="4" r="4" transform="translate(978 497) rotate(90)" fill="#fff"/>
+    <circle id="Ellipse_41" data-name="Ellipse 41" cx="4" cy="4" r="4" transform="translate(978 497) rotate(90)" fill="rgba(246,78,96,0.75)"/>
+  </g>
+  <g id="Group_344" data-name="Group 344" transform="translate(-942 -483)">
+    <circle id="Ellipse_45" data-name="Ellipse 45" cx="4" cy="4" r="4" transform="translate(950 497) rotate(90)" fill="#fff"/>
+    <circle id="Ellipse_42" data-name="Ellipse 42" cx="4" cy="4" r="4" transform="translate(950 497) rotate(90)" fill="rgba(246,78,96,0.25)"/>
+  </g>
+  <g id="Group_342" data-name="Group 342" transform="translate(-942 -483)">
+    <circle id="Ellipse_51" data-name="Ellipse 51" cx="4" cy="4" r="4" transform="translate(975.557 510.899) rotate(135)" fill="#fff"/>
+    <circle id="Ellipse_43" data-name="Ellipse 43" cx="4" cy="4" r="4" transform="translate(975.557 510.899) rotate(135)" fill="rgba(246,78,96,0.87)"/>
+  </g>
+  <g id="Group_343" data-name="Group 343" transform="translate(-942 -483)">
+    <circle id="Ellipse_47" data-name="Ellipse 47" cx="4" cy="4" r="4" transform="translate(955.757 491.101) rotate(135)" fill="#fff"/>
+    <circle id="Ellipse_44" data-name="Ellipse 44" cx="4" cy="4" r="4" transform="translate(955.757 491.101) rotate(135)" fill="rgba(246,78,96,0.37)"/>
+  </g>
+</svg>

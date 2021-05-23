@@ -1,3 +1,3 @@
 export {
-  useHideModal, useModal, useShowModal, useZoomCall
+  useHideModal, useModal, useShowModal
 } from './modal';

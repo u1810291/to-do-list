@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import Dashboard from '../views/Dashboard';
+import Dashboard from '../views/Tasks';
 
 export default [
   {

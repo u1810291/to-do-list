@@ -13,6 +13,7 @@ export const Container = styled.div`
   justify-content: center;
   box-sizing: border-box;
   overflow: hidden;
+  z-index: 10;
 `;
 
 export const Content = styled.div`
