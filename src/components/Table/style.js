@@ -73,7 +73,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled(Scrollable)`
-  height: ${({ height }) => (height || '550px')};
+  height: ${({ height }) => (height || '500px')};
   overflow-x: auto;
   overflow-y: auto;
 `;

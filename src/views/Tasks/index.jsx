@@ -7,10 +7,7 @@ import { Container } from './style';
 export default () => {
   const [pageIndex, setPageIndex] = useState();
   const [pageSize, setPageSize] = useState();
-  const query = useMemo(
-    () => `?page=${pageIndex}&size=${pageSize}&${sortQuery}`,
-    [pageIndex, pageSize, sortQuery, dateFilter]
-  );
+  const [sort, setSort] = useState();
   const data = [{
     id: 1,
     email: 'some@mail.com',
@@ -51,15 +48,30 @@ export default () => {
       accessor: 'description'
     },
     {
-      id: 3,
+      id: 4,
       accessor: 'status'
     }
   ];
+
+  const sortQuery = useMemo(() => {
+    const found = sort && header.find(({ id }) => id === sort.id).accessor;
+    console.log(found);
+    return found
+      ? `&sort=${found},${sort.desc ? 'desc' : 'asc'}`
+      : '';
+  }, [sort]);
+
+  const query = useMemo(
+    () => `?page=${pageIndex}&size=${pageSize}&${sortQuery}`,
+    [pageIndex, pageSize, sortQuery]
+  );
+
   const handleOnChange = ({ pageIndex, pageSize }) => {
     setPageIndex(pageIndex);
     setPageSize(pageSize);
   };
 
+  console.log(query);
   return (
     <Container>
       <TasksHeader />
@@ -68,7 +80,7 @@ export default () => {
         total={5}
         header={header}
         loading={false}
-        setSort={undefined}
+        setSort={setSort}
         onChange={handleOnChange}
       />
     </Container>

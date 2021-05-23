@@ -9,13 +9,13 @@ import {
   IconLeft,
   IconRight
 } from './style';
-import Dropdown from '../../Forms/Dropdowns';
+import { SingleDropdown as Dropdown } from '../../Forms/DropDown';
 import { useButtons } from './useButtons';
 
 const optionData = [
-  { value: 10, label: '10 item view' },
-  { value: 25, label: '25 item view' },
-  { value: 50, label: '50 item view' },
+  { value: 3, label: '10 item view' },
+  { value: 6, label: '25 item view' },
+  { value: 10, label: '50 item view' },
   { value: 100, label: '100 item view' }
 ];
 
@@ -63,7 +63,7 @@ const Pagination = ({
           disabled={!canPreviousPage}
           onClick={previousPage}
         >
-          <IconLeft
+          <IconRight
             color={!canPreviousPage ? '#C4C4C4' : '#262626'}
           />
         </ChangeButton>
@@ -71,7 +71,7 @@ const Pagination = ({
           disabled={!canNextPage}
           onClick={nextPage}
         >
-          <IconRight
+          <IconLeft
             color={!canNextPage ? '#C4C4C4' : '#262626'}
           />
         </ChangeButton>

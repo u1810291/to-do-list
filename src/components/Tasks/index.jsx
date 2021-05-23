@@ -11,11 +11,11 @@ export default ({
   onChange
 }) => (
   <Container>
-    Tasks
+    {console.log(data)}
     <Table
       data={data}
       total={total}
-      header={header}
+      headers={header}
       loading={loading}
       setSort={setSort}
       onChange={onChange}
