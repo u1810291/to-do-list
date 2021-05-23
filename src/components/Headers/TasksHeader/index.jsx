@@ -3,11 +3,12 @@ import { SearchInput } from '../../Forms/Inputs';
 import { PrimaryButton } from '../../Buttons';
 
 import { Container } from './style';
-import { useShowModal } from '../../../hooks';
+import { useShowModal, useHideModal } from '../../../hooks';
 import AddTask from './AddTask';
 
 export default () => {
   const { showBlured } = useShowModal();
+  const { hideModal } = useHideModal();
   return (
     <Container>
       <SearchInput placeholder="Search..." />
@@ -16,7 +17,7 @@ export default () => {
         size="large"
         onClick={() => showBlured({
           title: 'Add Task',
-          body: () => <AddTask />
+          body: () => <AddTask hide={hideModal} />
         })}
       />
     </Container>
