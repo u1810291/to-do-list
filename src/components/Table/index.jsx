@@ -6,7 +6,6 @@ import React, {
 import { useTable, useSortBy, usePagination } from 'react-table';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useSelector } from 'react-redux';
 import {
   Container,
   Table,
@@ -22,9 +21,6 @@ import {
   CheckBox,
   MenuButton
 } from './style';
-import HeaderToolTip from './HToolTip';
-import { ClickOutside } from '../../hooks/click-outside';
-import ToolTip from './ToolTip';
 import Pagination from './Pagination';
 import Spinner from '../Spinner';
 
@@ -68,13 +64,10 @@ const CustomTable = ({
   fetchData,
   loading,
   onChange,
-  setSort,
-  query
+  setSort
 }) => {
   const refClick = useRef(null);
   const [openH, setOpenH] = useState(false);
-  const [indexT, setIndexT] = useState(-1);
-  const name = useSelector((state) => state.shipmentsReducer.name);
   const notCheckable = useMemo(() => !headerToolTips.length, [headerToolTips]);
   const noActions = useMemo(() => !toolTips.length, [toolTips]);
   const [allChecked, setAllChecked] = useState([]);
@@ -141,20 +134,6 @@ const CustomTable = ({
           <Spinner contain />
         ) : (
           <>
-            <ClickOutside
-              outClickRef={refClick}
-              outsideClicked={() => {
-                setOpenH(false);
-              }}
-            >
-              <HeaderToolTip
-                shipmentName={name}
-                stack={stack}
-                open={openH}
-                data={headerToolTips}
-                handleClose={() => { setOpenH(false); }}
-              />
-            </ClickOutside>
             <Table {...getTableProps()}>
               <THead>
                 {headerGroups.map((headerGroup) => (
@@ -235,21 +214,6 @@ const CustomTable = ({
                             </Cell>
                           </TD>
                         ))}
-
-                        {!noActions && (
-                          <TD right>
-                            <Cell>
-                              <ToolTip
-                                indexT={indexT}
-                                index={index}
-                                itemId={row.original.id}
-                                data={toolTips}
-                                query={query}
-                                setIndexT={setIndexT}
-                              />
-                            </Cell>
-                          </TD>
-                        )}
                       </TR>
                     </React.Fragment>
                   );

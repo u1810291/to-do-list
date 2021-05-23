@@ -1,14 +1,16 @@
 import styled from 'styled-components';
-import { device } from '../../../utils/responsive';
+
+import { ReactComponent as Right } from '../../../assets/icons/next.svg';
+import { ReactComponent as Left } from '../../../assets/icons/prev.svg';
+
+export const IconLeft = styled(Right)``;
+export const IconRight = styled(Left)``;
 
 export const Container = styled.div`
   display: flex;
   margin-top: 16px;
   justify-content: flex-end;
   grid-gap: 13px;
-  @media ${device.mobile} {
-    padding: 16px;
-  }
 `;
 
 export const PageButtons = styled.div`

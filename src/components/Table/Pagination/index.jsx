@@ -5,10 +5,11 @@ import {
   PageButtons,
   ChangeButtons,
   Button,
-  ChangeButton
+  ChangeButton,
+  IconLeft,
+  IconRight
 } from './style';
-import Dropdown from '../../FormElements/Dropdowns/DropdownV3';
-import Icon from '../../Icon';
+import Dropdown from '../../Forms/Dropdowns';
 import { useButtons } from './useButtons';
 
 const optionData = [
@@ -62,20 +63,16 @@ const Pagination = ({
           disabled={!canPreviousPage}
           onClick={previousPage}
         >
-          <Icon
-            icon="left"
+          <IconLeft
             color={!canPreviousPage ? '#C4C4C4' : '#262626'}
-            size="16px"
           />
         </ChangeButton>
         <ChangeButton
           disabled={!canNextPage}
           onClick={nextPage}
         >
-          <Icon
-            icon="right"
+          <IconRight
             color={!canNextPage ? '#C4C4C4' : '#262626'}
-            size="16px"
           />
         </ChangeButton>
       </ChangeButtons>
