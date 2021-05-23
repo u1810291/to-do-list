@@ -5,12 +5,14 @@ import { Provider } from 'react-redux';
 import store from '../redux/store';
 import App from '../containers/App';
 import Modal from '../components/Modals/Blured';
+import Notification from '../components/Notification';
 
 export default () => (
   <Provider store={store}>
     <Router>
       <App />
       <Modal />
+      <Notification />
     </Router>
   </Provider>
 );

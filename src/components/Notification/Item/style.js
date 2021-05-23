@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: 75px;
+  min-height: 75px;
   margin-bottom: 12px;
   border-radius: 8px;
   padding: 0 15px;
@@ -40,6 +40,7 @@ export const Time = styled.span`
 export const Caption = styled.span`
   width: 88%;
   overflow: hidden;
+  break-word:break-all;
   text-overflow: ellipsis;
   white-space: nowrap;
 `;

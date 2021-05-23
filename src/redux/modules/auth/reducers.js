@@ -8,9 +8,10 @@ const defaultState = {
 
 const map = {
   [types.AUTH_LOGOUT]: (state) => {
-    localStorage.setItem('token', '');
+    localStorage.removeItem('token');
     return {
-      ...state, token: ''
+      ...state,
+      token: ''
     };
   },
   [types.AUTH_ERROR]: (state, { payload }) => ({
