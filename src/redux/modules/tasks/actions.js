@@ -10,3 +10,9 @@ export const fetchData = (payload, success) => ({
   payload,
   success
 });
+
+export const addTask = (payload, success) => ({
+  type: types.FETCH_TASKS,
+  payload,
+  success
+});

@@ -6,7 +6,7 @@ import { Container } from './style';
 import { useShowModal, useHideModal } from '../../../hooks';
 import AddTask from './AddTask';
 
-export default () => {
+export default ({ formik }) => {
   const { showBlured } = useShowModal();
   const { hideModal } = useHideModal();
   return (
@@ -17,7 +17,7 @@ export default () => {
         size="large"
         onClick={() => showBlured({
           title: 'Add Task',
-          body: () => <AddTask hide={hideModal} />
+          body: () => <AddTask formik={formik} hide={hideModal} />
         })}
       />
     </Container>

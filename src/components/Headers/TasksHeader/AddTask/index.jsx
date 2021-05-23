@@ -4,10 +4,19 @@ import { Container } from './style';
 import { NormalInput } from '../../../Forms/Inputs';
 import { PrimaryButton } from '../../../Buttons';
 
-export default ({ hide }) => (
-  <Container>
-    <NormalInput placeholder="Email" />
-    <NormalInput placeholder="Description" />
-    <PrimaryButton title="Save" size="large" onClick={() => hide()} />
+export default ({ formik, hide }) => (
+  <Container onSubmit={formik.handleSubmit}>
+    <NormalInput 
+      placeholder="Email" 
+      value={} 
+      />
+    <NormalInput 
+      placeholder="Description" 
+    />
+    <PrimaryButton 
+      title="Save" 
+      size="large" 
+      onClick={() => hide()} 
+    />
   </Container>
 );
