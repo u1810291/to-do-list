@@ -36,7 +36,7 @@ export const data = [{
 }, {
   id: 2,
   email: 'some2@mail.com',
-  description: '2 Complete Todo task manager',
+  description: '2 Complete Todo task manager ',
   status: 'open'
 }, {
   id: 3,
