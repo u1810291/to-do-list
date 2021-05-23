@@ -4,17 +4,22 @@ import types from '../../../constants/action-types';
 import service from '../../../services/auth';
 
 import {
-  setToken, setError
+  setError, setToken
 } from './actions';
 
 function* login({ payload, success }) {
   try {
     const { data } = yield service.login(payload);
-    yield put(setToken({ token: 'token' }));
-    success(data);
+    if (data.status === 'error') {
+      yield put(setError(Object.entries(data.message).join('\n')));
+      yield put(setError(''));
+    } else {
+      yield put(setToken({ token: 'token' }));
+      success(data);
+    }
   } catch (error) {
     console.log(error);
-    yield put(setError(error.response ? error.response.data.error_message : error));
+    yield put(setError(error));
   }
 }
 export default function* authSaga() {

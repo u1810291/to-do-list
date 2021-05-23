@@ -30,7 +30,7 @@ export default () => {
   };
   const dispatch = useDispatch();
   useEffect(() => {
-    if (error) dispatch(notify({ message: 'error', icon: 'cross' }));
+    if (error) dispatch(notify({ message: error, icon: 'cross' }));
   }, [error]);
 
   return (
