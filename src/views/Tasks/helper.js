@@ -74,5 +74,10 @@ export const header = [
     id: 4,
     Header: 'Status',
     accessor: 'status'
+  },
+  {
+    id: 5,
+    Header: 'Username',
+    accessor: 'username'
   }
 ];

@@ -19,7 +19,6 @@ export const useHandleSubmit = () => {
     validationSchema,
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
-      console.log(values);
       const formData = new FormData();
       formData.append('username', values.username);
       formData.append('password', values.password);
