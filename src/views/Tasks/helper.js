@@ -2,9 +2,11 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { addTask } from '../../redux/modules/tasks/actions';
+import { useHideModal } from '../../hooks';
 
 export const useAddTask = () => {
   const dispatch = useDispatch();
+  const { hideModal } = useHideModal();
   const validationSchema = Yup.object({
     email: Yup.string().email().required('Email is required'),
     description: Yup.string().required('Description is required')
@@ -18,7 +20,7 @@ export const useAddTask = () => {
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
       dispatch(addTask(values, () => {
-
+        hideModal();
       }));
     }
   });

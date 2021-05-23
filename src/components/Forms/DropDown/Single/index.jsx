@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState, useEffect } from 'react';
 
@@ -53,9 +54,9 @@ const Single = ({
       </Selection>
       <Menu id={`menu-container-${key}`} style={{ display: open ? 'flex' : 'none' }} disable width={width} end={end ? 1 : 0}>
         {
-          options.map((itm) => ((
+          options.map((itm, i) => ((
             Array.isArray(itm.value) ? (
-              <div key={itm.id}>
+              <div key={`unique-${i}`}>
                 <Menu.Item readOnly disabled key={itm.id} value={itm.name} width={width} />
                 {
                   itm.value.map((sub) => (
@@ -76,7 +77,7 @@ const Single = ({
               : (
                 <Menu.Item
                   id={itm.id}
-                  key={itm.id}
+                  key={`unique-${i}`}
                   readOnly
                   onClick={(e) => onClik(e)}
                   value={itm.value}

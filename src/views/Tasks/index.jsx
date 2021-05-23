@@ -9,7 +9,6 @@ export default () => {
   const [pageIndex, setPageIndex] = useState();
   const [pageSize, setPageSize] = useState();
   const [sort, setSort] = useState();
-  const { formik } = useAddTask();
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found
@@ -29,7 +28,7 @@ export default () => {
 
   return (
     <Container>
-      <TasksHeader formik={formik} />
+      <TasksHeader useAddTask={useAddTask} />
       <Tasks
         query={query}
         data={data}

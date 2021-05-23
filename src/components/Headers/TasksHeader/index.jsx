@@ -3,12 +3,11 @@ import { SearchInput } from '../../Forms/Inputs';
 import { PrimaryButton } from '../../Buttons';
 
 import { Container } from './style';
-import { useShowModal, useHideModal } from '../../../hooks';
+import { useShowModal } from '../../../hooks';
 import AddTask from './AddTask';
 
-export default ({ formik }) => {
+export default ({ useAddTask }) => {
   const { showBlured } = useShowModal();
-  const { hideModal } = useHideModal();
   return (
     <Container>
       <SearchInput placeholder="Search..." />
@@ -17,7 +16,7 @@ export default ({ formik }) => {
         size="large"
         onClick={() => showBlured({
           title: 'Add Task',
-          body: () => <AddTask formik={formik} hide={hideModal} />
+          body: () => <AddTask useAddTask={useAddTask} />
         })}
       />
     </Container>

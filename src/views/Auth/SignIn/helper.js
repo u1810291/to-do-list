@@ -7,15 +7,16 @@ import { login } from '../../../redux/modules/auth/actions';
 export const useHandleSubmit = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const validationSchema = Yup.object({
+    username: Yup.string().required('Username is required'),
+    password: Yup.string().required('Password is required')
+  });
   const formik = useFormik({
     initialValues: {
       username: '',
       password: ''
     },
-    validationSchema: Yup.object({
-      username: Yup.string().required('Username is required'),
-      password: Yup.string().required('Password is required')
-    }),
+    validationSchema,
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
       dispatch(login(values, (res) => {

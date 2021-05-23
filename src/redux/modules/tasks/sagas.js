@@ -21,13 +21,14 @@ function* fetchData({ payload }) {
 function* addTasks({ payload, success }) {
   try {
     yield put(setLoading(true));
-    const res = services.add(payload);
     // eslint-disable-next-line no-console
-    console.log(res);
+    console.log(payload);
+    const res = services.add(payload);
     success(res);
     yield put(setError(''));
     yield put(setLoading(false));
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.log(error);
     yield put(setError(error));
     yield put(setLoading(false));
