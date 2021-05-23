@@ -22,10 +22,17 @@ Selection.Text = styled.div`
   letter-spacing: 0.01em;
   line-height: 24px;
   text-align: left;
-  color: ${({ color }) => (color || '#9D9D9D')};
+  color: ${({ color }) => (color || '#0062FF')};
   `;
 Selection.Icon = styled.div`
   margin-left: auto;
+  svg{
+    path{
+
+      fill: #0062FF !important;
+    }
+  }
+
 `;
 
 export const Menu = styled.div`

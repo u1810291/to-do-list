@@ -55,7 +55,6 @@ export default () => {
 
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
-    console.log(found);
     return found
       ? `&sort=${found},${sort.desc ? 'desc' : 'asc'}`
       : '';
@@ -71,11 +70,11 @@ export default () => {
     setPageSize(pageSize);
   };
 
-  console.log(query);
   return (
     <Container>
       <TasksHeader />
       <Tasks
+        query={query}
         data={data}
         total={5}
         header={header}

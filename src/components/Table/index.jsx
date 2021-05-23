@@ -136,10 +136,11 @@ const CustomTable = ({
           <>
             <Table {...getTableProps()}>
               <THead>
-                {headerGroups.map((headerGroup) => (
+                {headerGroups.map((headerGroup, i) => (
                   <TR
                     {...headerGroup.getHeaderGroupProps()}
                     notCheckable={notCheckable}
+                    key={`${i + 1}`}
                   >
                     {!notCheckable && (
                       <TH left>
@@ -157,11 +158,12 @@ const CustomTable = ({
                         </Cell>
                       </TH>
                     )}
-                    {headerGroup.headers.map((header) => (
+                    {headerGroup.headers.map((header, index) => (
                       <TH
                         {...header.getHeaderProps(
                           header.getSortByToggleProps()
                         )}
+                        key={`${index + 1}`}
                         notCheckable={notCheckable}
                       >
                         <Cell className={headerClass}>

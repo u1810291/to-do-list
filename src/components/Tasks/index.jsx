@@ -11,7 +11,6 @@ export default ({
   onChange
 }) => (
   <Container>
-    {console.log(data)}
     <Table
       data={data}
       total={total}

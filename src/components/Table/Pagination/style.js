@@ -38,8 +38,8 @@ export const Button = styled.button`
   }
   ${({ active }) => active
     && `
-    background: #FFE9ED;
-    color: #F24142;
+    background: #e2ebf9 ;
+    color: #0062FF;
   `}
 `;
 
