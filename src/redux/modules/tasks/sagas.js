@@ -10,9 +10,7 @@ import { dataSelector } from './selectors';
 function* fetchData({ payload }) {
   try {
     yield put(setLoading(true));
-    console.log(payload);
     const res = yield services.getAll(payload);
-    console.log(res.data.message);
     if (res.data.status === 'error') {
       yield put(setError(Object.entries(res.data.message).join('\n')));
       yield put(setLoading(false));

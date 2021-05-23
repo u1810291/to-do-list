@@ -12,17 +12,19 @@ export default () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
-  const { data, loading, error } = useSelector((state) => state.tasksReducer);
+  const {
+    data, loading, total, error
+  } = useSelector((state) => state.tasksReducer);
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found
-      ? `sort=${found},${sort.desc ? 'desc' : 'asc'}`
+      ? `sort_field=${found}&sort_direction=${sort.desc ? 'desc' : 'asc'}`
       : '';
   }, [sort]);
 
   const query = useMemo(
-    () => (pageIndex || sortQuery ? `&page=${pageIndex}&${sortQuery}` : ''),
-    [pageIndex, pageSize, sortQuery]
+    () => `&page=${pageIndex}&${sortQuery}`,
+    [pageIndex, sortQuery]
   );
 
   const handleOnChange = ({ pageIndex, pageSize }) => {
@@ -32,7 +34,7 @@ export default () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchData(query));
-  }, []);
+  }, [query]);
   useEffect(() => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
   }, [error]);
@@ -41,8 +43,9 @@ export default () => {
     <Container>
       <TasksHeader useAddTask={useAddTask} />
       <Tasks
+        pageSize={pageSize}
         data={data}
-        total={5}
+        total={total}
         header={header}
         loading={loading}
         setSort={setSort}

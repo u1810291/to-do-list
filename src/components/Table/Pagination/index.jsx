@@ -9,15 +9,7 @@ import {
   IconLeft,
   IconRight
 } from './style';
-import { SingleDropdown as Dropdown } from '../../Forms/DropDown';
 import { useButtons } from './useButtons';
-
-const optionData = [
-  { value: 3, label: '10 item view' },
-  { value: 6, label: '25 item view' },
-  { value: 10, label: '50 item view' },
-  { value: 100, label: '100 item view' }
-];
 
 const Pagination = ({
   canPreviousPage,
@@ -26,8 +18,6 @@ const Pagination = ({
   gotoPage,
   nextPage,
   previousPage,
-  pageSize,
-  setPageSize,
   pageIndex
 }) => {
   const buttons = useButtons({ pageCount, pageIndex });
@@ -38,14 +28,6 @@ const Pagination = ({
 
   return (
     <Container>
-      <Dropdown
-        white
-        placeholder="Select"
-        options={optionData}
-        value={pageSize}
-        onChange={setPageSize}
-        size="large"
-      />
       <PageButtons repeat={pageCount > 3 ? 3 : pageCount}>
         {buttons.map((title, index) => (
           <Button

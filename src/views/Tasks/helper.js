@@ -67,17 +67,18 @@ export const header = [
   },
   {
     id: 3,
-    Header: 'Description',
-    accessor: 'description'
+    Header: 'Username',
+    accessor: 'username'
   },
   {
     id: 4,
-    Header: 'Status',
-    accessor: 'status'
+    Header: 'Description',
+    accessor: 'description',
+    disableSortBy: true
   },
   {
     id: 5,
-    Header: 'Username',
-    accessor: 'username'
+    Header: 'Status',
+    accessor: 'status'
   }
 ];
