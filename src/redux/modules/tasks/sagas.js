@@ -22,14 +22,14 @@ function* addTasks({ payload, success }) {
   try {
     yield put(setLoading(true));
     // eslint-disable-next-line no-console
-    const res = services.add(payload);
+    const res = yield services.add(payload);
     success(res);
     yield put(setError(''));
     yield put(setLoading(false));
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.log('error', error);
-    yield put(setError(error));
+    console.log(error.toString());
+    yield put(setError(error.toString()));
     yield put(setLoading(false));
   }
 }
