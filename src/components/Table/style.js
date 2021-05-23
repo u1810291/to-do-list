@@ -29,13 +29,13 @@ const paddings = css`
 const stickyTH = css`
   &:nth-child(1) {
     left: 0;
-    z-index: 3;
+    z-index: 2;
   }
   ${({ notCheckable }) => !notCheckable
     && `
       &:nth-child(2) {
       left: var(--table-margin-first-element-sticky);
-      z-index: 3;
+      z-index: 2;
     }
   `}
 `;
