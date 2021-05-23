@@ -19,9 +19,13 @@ export const useHandleSubmit = () => {
     validationSchema,
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
-      dispatch(login(values, (res) => {
+      console.log(values);
+      const formData = new FormData();
+      formData.append('username', values.username);
+      formData.append('password', values.password);
+      dispatch(login(formData, (res) => {
         setSubmitting(false);
-        if (res) history.go('/');
+        if (!res) history.go('/');
       }));
     }
   });
