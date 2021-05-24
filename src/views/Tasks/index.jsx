@@ -9,12 +9,14 @@ import { notify } from '../../redux/modules/notifications/actions';
 import { fetchData } from '../../redux/modules/tasks/actions';
 
 export default () => {
+  const dispatch = useDispatch();
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
   const {
     data, loading, total, error
   } = useSelector((state) => state.tasksReducer);
+
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found
@@ -31,12 +33,13 @@ export default () => {
     setPageIndex(pageIndex);
     setPageSize(pageSize);
   };
-  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchData(query));
-  }, [query]);
-  useEffect(() => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
+  }, [query, error]);
+
+  useEffect(() => {
   }, [error]);
 
   return (
