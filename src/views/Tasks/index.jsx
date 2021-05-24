@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Tasks from '../../components/Tasks';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
-import { useAddTask, header } from './helper';
+import { useAddTask, header, headerToolTips } from './helper';
 import { notify } from '../../redux/modules/notifications/actions';
 import { fetchData } from '../../redux/modules/tasks/actions';
 
@@ -45,6 +45,7 @@ export default () => {
       <TasksHeader useAddTask={useAddTask} />
       <Tasks
         pageSize={pageSize}
+        headerToolTips={headerToolTips}
         data={data}
         total={total}
         header={header}

@@ -61,3 +61,11 @@ export const header = [
     accessor: 'status'
   }
 ];
+
+export const headerToolTips = [
+  {
+    name: 'Excel',
+    icon: 'exel',
+    onClick: () => {}
+  }
+];

@@ -70,7 +70,6 @@ const CustomTable = ({
   const [openH, setOpenH] = useState(false);
   const notCheckable = useMemo(() => !headerToolTips.length, [headerToolTips]);
   const noActions = useMemo(() => !toolTips.length, [toolTips]);
-  const [allChecked, setAllChecked] = useState([]);
   const [pgCount, setPgCount] = useState(0);
   const [stack, setStack] = useState([]);
   const {
@@ -145,10 +144,6 @@ const CustomTable = ({
                     {!notCheckable && (
                       <TH left>
                         <Cell>
-                          <CheckBox
-                            type="checkbox"
-                            onChange={() => setAllChecked({ ...page })}
-                          />
                           <MenuButton
                             ref={refClick}
                             onClick={() => setOpenH(!openH)}
@@ -199,7 +194,6 @@ const CustomTable = ({
                                 row={row}
                                 stack={stack}
                                 setStack={setStack}
-                                shouldCheck={allChecked}
                               />
                             </Cell>
                           </TD>
