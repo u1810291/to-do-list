@@ -13,6 +13,7 @@ export default () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
+  const [stack, setStack] = useState([]);
   const {
     data, loading, total, error, success
   } = useSelector((state) => state.tasksReducer);
@@ -47,6 +48,8 @@ export default () => {
         pageSize={pageSize}
         headerToolTips={headerToolTips}
         data={data}
+        stack={stack}
+        setStack={setStack}
         total={total}
         header={header}
         loading={loading}

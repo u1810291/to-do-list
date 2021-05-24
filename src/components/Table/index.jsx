@@ -64,14 +64,15 @@ const CustomTable = ({
   fetchData,
   loading,
   onChange,
-  setSort
+  setSort,
+  stack,
+  setStack
 }) => {
   const refClick = useRef(null);
   const [openH, setOpenH] = useState(false);
   const notCheckable = useMemo(() => !headerToolTips.length, [headerToolTips]);
   const noActions = useMemo(() => !toolTips.length, [toolTips]);
   const [pgCount, setPgCount] = useState(0);
-  const [stack, setStack] = useState([]);
   const {
     getTableProps,
     getTableBodyProps,
@@ -147,9 +148,7 @@ const CustomTable = ({
                           <MenuButton
                             ref={refClick}
                             onClick={() => setOpenH(!openH)}
-                          >
-                            Menu
-                          </MenuButton>
+                          />
                         </Cell>
                       </TH>
                     )}
@@ -163,7 +162,6 @@ const CustomTable = ({
                       >
                         <Cell className={headerClass}>
                           {header.render('Header')}
-
                           {header.canSort && (
                             <Icon
                               {...getIcon(header.isSorted, header.isSortedDesc)}
