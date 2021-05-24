@@ -131,7 +131,7 @@ const CustomTable = ({
         ignoreElements="input, .content>span"
       >
         {loading ? (
-          <Spinner contain />
+          <Spinner contain black />
         ) : (
           <>
             <Table {...getTableProps()}>

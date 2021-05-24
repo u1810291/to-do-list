@@ -4,18 +4,17 @@ import types from '../../../constants/action-types';
 import service from '../../../services/auth';
 
 import {
-  setError, setToken
+  setError, setSuccess, setToken
 } from './actions';
 
 function* login({ payload, success }) {
   try {
     const { data } = yield service.login(payload);
-    console.log(data);
     if (data.status === 'error') {
       yield put(setError(Object.entries(data.message).join('\n')));
       yield put(setError(''));
     } else {
-      console.log(data.message.token);
+      yield put(setSuccess(data.status));
       yield put(setToken({ token: data.message.token }));
       success(data);
     }

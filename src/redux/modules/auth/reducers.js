@@ -3,7 +3,8 @@ import types from '../../../constants/action-types';
 
 const defaultState = {
   token: localStorage.getItem('token'),
-  error: ''
+  error: '',
+  success: ''
 };
 
 const map = {
@@ -17,6 +18,10 @@ const map = {
   [types.AUTH_ERROR]: (state, { payload }) => ({
     ...state,
     error: payload
+  }),
+  [types.AUTH_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    success: payload
   }),
   [types.AUTH_SET_TOKEN]: (state, { payload }) => {
     localStorage.setItem('token', payload);
