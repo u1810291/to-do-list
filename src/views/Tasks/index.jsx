@@ -14,7 +14,7 @@ export default () => {
   const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
   const {
-    data, loading, total, error
+    data, loading, total, error, success
   } = useSelector((state) => state.tasksReducer);
 
   const sortQuery = useMemo(() => {
@@ -37,10 +37,8 @@ export default () => {
   useEffect(() => {
     dispatch(fetchData(query));
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
-  }, [query, error]);
-
-  useEffect(() => {
-  }, [error]);
+    if (success) dispatch(notify({ message: success, icon: 'ok' }));
+  }, [query, error, success]);
 
   return (
     <Container>

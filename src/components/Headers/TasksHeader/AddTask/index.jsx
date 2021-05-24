@@ -9,6 +9,15 @@ const AddTask = ({ useAddTask }) => {
   return (
     <Container onSubmit={formik.handleSubmit}>
       <NormalInput
+        placeholder="Username"
+        type={formik.touched.username && formik.errors.username && 'error'}
+        helperText={formik.touched.username
+        && formik.errors.username
+        && formik.errors.username}
+        value={formik.values.username}
+        onChange={(e) => formik.setFieldValue('username', e.target.value)}
+      />
+      <NormalInput
         placeholder="Email"
         type={formik.touched.email && formik.errors.email && 'error'}
         helperText={formik.touched.email
