@@ -4,24 +4,27 @@ import { useSelector, useDispatch } from 'react-redux';
 import Tasks from '../../components/Tasks';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
-import { useAddTask, header, data } from './helper';
+import { useAddTask, header } from './helper';
 import { notify } from '../../redux/modules/notifications/actions';
+import { fetchData } from '../../redux/modules/tasks/actions';
 
 export default () => {
-  const [pageIndex, setPageIndex] = useState();
-  const [pageSize, setPageSize] = useState();
+  const [pageIndex, setPageIndex] = useState(0);
+  const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
-  const { error } = useSelector((state) => state.tasksReducer);
+  const {
+    data, loading, total, error
+  } = useSelector((state) => state.tasksReducer);
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found
-      ? `&sort=${found},${sort.desc ? 'desc' : 'asc'}`
+      ? `sort_field=${found}&sort_direction=${sort.desc ? 'desc' : 'asc'}`
       : '';
   }, [sort]);
 
   const query = useMemo(
-    () => `?page=${pageIndex}&size=${pageSize}&${sortQuery}`,
-    [pageIndex, pageSize, sortQuery]
+    () => `&page=${pageIndex}&${sortQuery}`,
+    [pageIndex, sortQuery]
   );
 
   const handleOnChange = ({ pageIndex, pageSize }) => {
@@ -30,6 +33,9 @@ export default () => {
   };
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(fetchData(query));
+  }, [query]);
+  useEffect(() => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
   }, [error]);
 
@@ -37,11 +43,11 @@ export default () => {
     <Container>
       <TasksHeader useAddTask={useAddTask} />
       <Tasks
-        query={query}
+        pageSize={pageSize}
         data={data}
-        total={5}
+        total={total}
         header={header}
-        loading={false}
+        loading={loading}
         setSort={setSort}
         onChange={handleOnChange}
       />

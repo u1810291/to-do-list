@@ -2,21 +2,30 @@ import { takeLatest, put } from 'redux-saga/effects';
 import types from '../../../constants/action-types';
 import services from '../../../services/tasks';
 import {
-  setData, setError, setLoading, setSuccess
+  setData, setError, setLoading, setSuccess, setTotal
 } from './actions';
+
+import { dataSelector } from './selectors';
 
 function* fetchData({ payload }) {
   try {
     yield put(setLoading(true));
-    const res = services.getAll(payload);
-    yield put(setData(res));
-    yield put(setError(''));
-    yield put(setLoading(false));
+    const res = yield services.getAll(payload);
+    if (res.data.status === 'error') {
+      yield put(setError(Object.entries(res.data.message).join('\n')));
+      yield put(setLoading(false));
+      yield put(setError(''));
+    } else {
+      const { data, total } = dataSelector(res.data.message);
+      yield put(setData(data));
+      yield put(setTotal(total));
+      yield put(setError(''));
+      yield put(setLoading(false));
+    }
   } catch (error) {
     yield put(setError(error));
     // eslint-disable-next-line no-console
     console.log(error);
-    yield put(setLoading(false));
   }
 }
 

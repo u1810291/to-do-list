@@ -10,13 +10,15 @@ import {
 function* login({ payload, success }) {
   try {
     const { data } = yield service.login(payload);
-    // if (data.status === 'error') {
-    //   yield put(setError(Object.entries(data.message).join('\n')));
-    //   yield put(setError(''));
-    // } else {
-    yield put(setToken({ token: 'token' }));
-    success(data);
-    // }
+    console.log(data);
+    if (data.status === 'error') {
+      yield put(setError(Object.entries(data.message).join('\n')));
+      yield put(setError(''));
+    } else {
+      console.log(data.message.token);
+      yield put(setToken({ token: data.message.token }));
+      success(data);
+    }
   } catch (error) {
     console.log(error);
     yield put(setError(error));

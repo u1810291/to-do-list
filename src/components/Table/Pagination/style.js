@@ -31,7 +31,7 @@ export const PageButtons = styled.div`
   border-radius: 8px;
   max-width: 300px;
   height: 43px;
-  display: grid;
+  display: flex;
   overflow: hidden;
 `;
 
