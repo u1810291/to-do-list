@@ -29,20 +29,21 @@ function* fetchData({ payload }) {
   }
 }
 
-function* addTasks({ payload }) {
+function* addTasks({ payload, success }) {
   try {
-    yield put(setLoading(true));
-    // eslint-disable-next-line no-console
     const res = yield services.add(payload);
-    yield put(setSuccess(res));
-    yield put(setError(''));
-    yield put(setLoading(false));
-    yield put(setSuccess(''));
+    if (res.data.status === 'error') {
+      yield put(setError(Object.entries(res.data.message).join('\n')));
+      yield put(setError(''));
+    } else {
+      yield put(setSuccess(res.data.status));
+      yield put(setSuccess(''));
+      success(res);
+    }
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error.toString());
     yield put(setError(error.toString()));
-    yield put(setLoading(false));
     yield put(setError(''));
   }
 }

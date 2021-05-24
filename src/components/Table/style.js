@@ -29,7 +29,8 @@ const paddings = css`
 const stickyTH = css`
   &:nth-child(1) {
     left: 0;
-    z-index: 2;
+    position: sticky;
+    z-index: 20;
   }
   ${({ notCheckable }) => !notCheckable
     && `
@@ -73,13 +74,13 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled(Scrollable)`
-  height: ${({ height }) => (height || '500px')};
+  height: ${({ height }) => (height || '700px')};
   overflow-x: auto;
   overflow-y: auto;
 `;
 
 export const Cell = styled.div`
-  padding-left: var(--table-cell-left-padding);
+  padding-left: 70px;
   padding-right: 16px;
   position: relative;
   display: flex;
@@ -88,12 +89,12 @@ export const Cell = styled.div`
 `;
 
 export const THead = styled.thead``;
+
 export const TH = styled.th`
   text-align: left;
   ${paddings};
-  white-space: nowrap;
-  position: sticky;
   top: 0;
+  white-space: nowrap;
   background: #F5F5F8;
   z-index: 2;
   ${stickyTH}
@@ -101,7 +102,6 @@ export const TH = styled.th`
     height: 56px;
     display: flex;
     align-items: center;
-    padding-right: calc(var(--table-cell-right-padding) + 16px);
   }
   & ${CheckBox}:not(:checked) {
     background: white;

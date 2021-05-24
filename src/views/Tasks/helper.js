@@ -1,26 +1,31 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTask } from '../../redux/modules/tasks/actions';
 import { useHideModal } from '../../hooks';
 
 export const useAddTask = () => {
-  const { success } = useSelector((state) => state.tasksReducer);
   const dispatch = useDispatch();
   const { hideModal } = useHideModal();
   const validationSchema = Yup.object({
+    username: Yup.string().required('Username is required'),
     email: Yup.string().email().required('Email is required'),
     description: Yup.string().required('Description is required')
   });
   const formik = useFormik({
     initialValues: {
+      username: '',
       email: '',
       description: ''
     },
     validationSchema,
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
-      dispatch(addTask(values, () => {
+      const formData = new FormData();
+      formData.append('username', values.username);
+      formData.append('email', values.email);
+      formData.append('text', values.description);
+      dispatch(addTask(formData, (success) => {
         if (success) hideModal();
       }));
     }
@@ -28,32 +33,6 @@ export const useAddTask = () => {
 
   return { formik };
 };
-export const data = [{
-  id: 1,
-  email: 'some@mail.com',
-  description: 'Complete Todo task manager',
-  status: 'open'
-}, {
-  id: 2,
-  email: 'some2@mail.com',
-  description: '2 Complete Todo task manager ',
-  status: 'open'
-}, {
-  id: 3,
-  email: '3some@mail.com',
-  description: '3 Complete Todo task manager',
-  status: 'open'
-}, {
-  id: 4,
-  email: '4some@mail.com',
-  description: '4 Complete Todo task manager',
-  status: 'open'
-}, {
-  id: 5,
-  email: '5some@mail.com',
-  description: '5 Complete Todo task manager',
-  status: 'open'
-}];
 export const header = [
   {
     id: 1,
@@ -80,5 +59,13 @@ export const header = [
     id: 5,
     Header: 'Status',
     accessor: 'status'
+  }
+];
+
+export const headerToolTips = [
+  {
+    name: 'Excel',
+    icon: 'exel',
+    onClick: () => {}
   }
 ];

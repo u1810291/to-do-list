@@ -8,7 +8,10 @@ export default ({
   header,
   loading,
   setSort,
-  onChange
+  onChange,
+  headerToolTips,
+  stack,
+  setStack
 }) => (
   <Container>
     <Table
@@ -18,6 +21,9 @@ export default ({
       loading={loading}
       setSort={setSort}
       onChange={onChange}
+      stack={stack}
+      setStack={setStack}
+      headerToolTips={headerToolTips}
     />
   </Container>
 );

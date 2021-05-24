@@ -64,15 +64,15 @@ const CustomTable = ({
   fetchData,
   loading,
   onChange,
-  setSort
+  setSort,
+  stack,
+  setStack
 }) => {
   const refClick = useRef(null);
   const [openH, setOpenH] = useState(false);
   const notCheckable = useMemo(() => !headerToolTips.length, [headerToolTips]);
   const noActions = useMemo(() => !toolTips.length, [toolTips]);
-  const [allChecked, setAllChecked] = useState([]);
   const [pgCount, setPgCount] = useState(0);
-  const [stack, setStack] = useState([]);
   const {
     getTableProps,
     getTableBodyProps,
@@ -131,7 +131,7 @@ const CustomTable = ({
         ignoreElements="input, .content>span"
       >
         {loading ? (
-          <Spinner contain />
+          <Spinner contain black />
         ) : (
           <>
             <Table {...getTableProps()}>
@@ -145,16 +145,10 @@ const CustomTable = ({
                     {!notCheckable && (
                       <TH left>
                         <Cell>
-                          <CheckBox
-                            type="checkbox"
-                            onChange={() => setAllChecked({ ...page })}
-                          />
                           <MenuButton
                             ref={refClick}
                             onClick={() => setOpenH(!openH)}
-                          >
-                            Menu
-                          </MenuButton>
+                          />
                         </Cell>
                       </TH>
                     )}
@@ -168,7 +162,6 @@ const CustomTable = ({
                       >
                         <Cell className={headerClass}>
                           {header.render('Header')}
-
                           {header.canSort && (
                             <Icon
                               {...getIcon(header.isSorted, header.isSortedDesc)}
@@ -199,7 +192,6 @@ const CustomTable = ({
                                 row={row}
                                 stack={stack}
                                 setStack={setStack}
-                                shouldCheck={allChecked}
                               />
                             </Cell>
                           </TD>

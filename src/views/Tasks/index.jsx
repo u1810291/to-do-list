@@ -4,17 +4,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import Tasks from '../../components/Tasks';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
-import { useAddTask, header } from './helper';
+import { useAddTask, header, headerToolTips } from './helper';
 import { notify } from '../../redux/modules/notifications/actions';
 import { fetchData } from '../../redux/modules/tasks/actions';
 
 export default () => {
+  const dispatch = useDispatch();
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
+  const [stack, setStack] = useState([]);
   const {
-    data, loading, total, error
+    data, loading, total, error, success
   } = useSelector((state) => state.tasksReducer);
+
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found
@@ -31,20 +34,22 @@ export default () => {
     setPageIndex(pageIndex);
     setPageSize(pageSize);
   };
-  const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchData(query));
-  }, [query]);
-  useEffect(() => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
-  }, [error]);
+    if (success) dispatch(notify({ message: success, icon: 'ok' }));
+  }, [query, error, success]);
 
   return (
     <Container>
       <TasksHeader useAddTask={useAddTask} />
       <Tasks
         pageSize={pageSize}
+        headerToolTips={headerToolTips}
         data={data}
+        stack={stack}
+        setStack={setStack}
         total={total}
         header={header}
         loading={loading}

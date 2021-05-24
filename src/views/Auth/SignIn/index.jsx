@@ -10,10 +10,11 @@ import { notify } from '../../../redux/modules/notifications/actions';
 export default () => {
   const dispatch = useDispatch();
   const { formik } = useHandleSubmit();
-  const { error } = useSelector((state) => state.authReducer);
+  const { error, success } = useSelector((state) => state.authReducer);
   useEffect(() => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
-  }, [error]);
+    if (success) dispatch(notify({ message: success, icon: 'ok' }));
+  }, [error, success]);
   return (
     <AuthContainer onSubmit={formik.handleSubmit}>
       <NormalInput

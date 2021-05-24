@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import {
-  Container, Wrapper, CloseButton, Time, Caption
+  Container, Wrapper, CloseButton, Time, Caption, Ok, Cross, Icon
 } from './style';
 import { closeNotify } from '../../../redux/modules/notifications/actions';
 
@@ -16,13 +16,17 @@ const Item = ({
   const dispatch = useDispatch();
   return (
     <Container className={classname} icon={icon}>
-      <div>
-        {icon}
-      </div>
+      <Icon>
+        {icon === 'ok'
+          ? <Ok />
+          : <Cross />}
+      </Icon>
       <Wrapper>
         <div>
           <CloseButton onClick={() => dispatch(closeNotify(id))}>
-            {icon}
+            {icon === 'ok'
+              ? <Ok />
+              : <Cross />}
           </CloseButton>
         </div>
         <Caption className={caption}>{message}</Caption>

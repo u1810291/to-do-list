@@ -1,4 +1,20 @@
 import styled from 'styled-components';
+import { ReactComponent as OkIcon } from '../../../assets/icons/ok.svg';
+import { ReactComponent as CrossIcon } from '../../../assets/icons/cross.svg';
+
+export const Ok = styled(OkIcon)`
+  height: 100%;
+  width: 100%;
+`;
+export const Cross = styled(CrossIcon)`
+  height: 100%;
+  width: 100%;
+`;
+
+export const Icon = styled.div`
+  height: 40px;
+  width: 40px;
+`;
 
 export const Container = styled.div`
   min-height: 75px;
@@ -9,7 +25,7 @@ export const Container = styled.div`
   align-items: center;
   position: relative;
   box-sizing: border-box;
-  background: ${({ icon }) => (icon === 'cross' ? '#F94144' : '#55b0ff')};
+  background: ${({ icon }) => (icon === 'cross' ? '#F94144' : '#2eab26')};
 `;
 
 export const Wrapper = styled.div`
@@ -23,8 +39,10 @@ export const CloseButton = styled.button`
   border: none;
   background: transparent;
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 15px;
+  height: 35px;
+  width: 35px;
   cursor: pointer;
   &:focus {
     outline: none;

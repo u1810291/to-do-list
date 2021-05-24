@@ -9,5 +9,5 @@ export function dataSelector(data) {
     description: el.text,
     username: el.username
   }));
-  return { data: filtered, total: total_task_count };
+  return { data: filtered, total: parseInt(total_task_count, 10) };
 }

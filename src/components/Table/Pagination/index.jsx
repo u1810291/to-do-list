@@ -28,13 +28,13 @@ const Pagination = ({
 
   return (
     <Container>
-      <PageButtons repeat={pageCount > 3 ? 3 : pageCount}>
+      <PageButtons repeat={pageCount > 7 ? 7 : pageCount}>
         {buttons.map((title, index) => (
           <Button
             key={`${index + 1}`}
-            onClick={() => handlePageChange(title)}
+            onClick={() => handlePageChange(index + 1)}
             // eslint-disable-next-line eqeqeq
-            active={pageIndex == title}
+            active={pageIndex == index + 1}
           >
             {title !== '...' ? title + 1 : title}
           </Button>
