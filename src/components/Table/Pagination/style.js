@@ -26,13 +26,14 @@ export const Container = styled.div`
   max-width: 100%;
 `;
 
-export const PageButtons = styled.div`
+export const PageButtons = styled.div`  
   background-color: white;
   border-radius: 8px;
-  max-width: 300px;
+  max-width: 350px;
   height: 43px;
-  display: flex;
+  display: grid;
   overflow: hidden;
+  grid-template-columns: ${({ repeat }) => (repeat ? `repeat(${repeat}, 1fr)` : 'repeat(7, 1fr)')};
 `;
 
 export const Button = styled.button`
