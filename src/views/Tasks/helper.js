@@ -25,7 +25,7 @@ const edit = (id) => {
       setSubmitting(true);
       const formData = new FormData();
       if (values.text) formData.append('text', values.text);
-      if (values.status) formData.append('status', values.status);
+      if (values.status) formData.append('status', parseInt(values.status, 10));
       dispatch(editTask({ id, formData }, (res) => {
         if (res) hideModal();
       }));
