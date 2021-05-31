@@ -217,6 +217,7 @@ const CustomTable = ({
                             <TD right>
                               <ClickOutside outsideClicked={() => { setOpen(false); }}>
                                 <ToolTip
+                                  row={row}
                                   TIndex={TIndex}
                                   index={index}
                                   open={open}
