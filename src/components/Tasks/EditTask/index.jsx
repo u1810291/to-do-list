@@ -6,7 +6,6 @@ import { Container, Form } from '../style';
 
 export default ({ id, edit }) => {
   const { formik } = edit(id);
-
   return (
     <Container>
       <Form onSubmit={formik.handleSubmit}>

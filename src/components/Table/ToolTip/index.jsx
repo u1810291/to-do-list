@@ -12,7 +12,7 @@ import { useShowModal } from '../../../hooks/modal';
 
 export default ({
   // eslint-disable-next-line react/prop-types
-  children, index, TIndex, open, onClick, id, toolTipData
+  children, index, TIndex, open, onClick, id, toolTipData, row
 }) => {
   const modal = useShowModal();
 
@@ -23,8 +23,8 @@ export default ({
           toolTipData.map(({ name, onClick: ItemClick }, positionIndex) => (
             <OptionButton
               onClick={() => ItemClick(id, {
+                row,
                 ...modal
-
               })}
               key={`${positionIndex + 1}`}
             >

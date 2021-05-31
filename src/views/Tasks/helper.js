@@ -119,10 +119,10 @@ export const headerToolTips = [{}];
 export const toolTips = [
   {
     name: 'Edit',
-    onClick: (id, { showBlured }) => {
+    onClick: (_, { row, showBlured }) => {
       showBlured({
         title: 'Edit task',
-        body: () => <EditTask id={id} edit={edit} />
+        body: () => <EditTask id={row.original.id} edit={edit} />
       });
     }
   }
