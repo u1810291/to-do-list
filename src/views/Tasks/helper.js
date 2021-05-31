@@ -24,6 +24,8 @@ const edit = (id) => {
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
       const formData = new FormData();
+      const token = localStorage.getItem('token');
+      formData.append('token', token);
       if (values.text) formData.append('text', values.text);
       if (values.status) formData.append('status', parseInt(values.status, 10));
       dispatch(editTask({ id, formData }, (res) => {
@@ -42,7 +44,7 @@ export const dataMaker = (data) => data.map(({
     ...status,
     title: 'Update status',
     name: status === 0 ? 'Not completed'
-      : status === 1 ? 'Not completed edited by admin'
+      : status === 1 ? 'Not completed, but edited by admin'
         : status === 10 ? 'Completed'
           : status === 11 ? 'Completed and edited by admin' : '',
     color: {
@@ -102,7 +104,7 @@ export const header = [
   },
   {
     id: 4,
-    Header: 'Description',
+    Header: 'Text',
     accessor: 'description',
     disableSortBy: true
   },
