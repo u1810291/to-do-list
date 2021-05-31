@@ -48,7 +48,27 @@ function* addTasks({ payload, success }) {
   }
 }
 
+function* editTask({ payload, success }) {
+  try {
+    const res = yield services.edit(payload);
+    if (res.data.status === 'error') {
+      yield put(setError(Object.entries(res.data.message).join('\n')));
+      yield put(setError(''));
+    } else {
+      yield put(setSuccess(res.data.status));
+      yield put(setSuccess(''));
+      success(res);
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.log(error.toString());
+    yield put(setError(error.toString()));
+    yield put(setError(''));
+  }
+}
+
 export default function* tasksAdd() {
   yield takeLatest(types.FETCH_TASKS, fetchData);
   yield takeLatest(types.ADD_TASKS, addTasks);
+  yield takeLatest(types.EDIT_TASKS, editTask);
 }

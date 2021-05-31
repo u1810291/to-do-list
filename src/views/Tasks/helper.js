@@ -1,8 +1,45 @@
+import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addTask } from '../../redux/modules/tasks/actions';
+import { addTask, editTask } from '../../redux/modules/tasks/actions';
 import { useHideModal } from '../../hooks';
+import EditTask from '../../components/Tasks/EditTask';
+import UpdateStatus from './UpdateStatus';
+
+export const dataMaker = (data) => data.map(({
+  status, ...rest
+}) => ({
+  ...rest,
+  status: {
+    ...status,
+    title: 'Update status',
+    component: <UpdateStatus />
+  }
+}));
+
+const edit = (id) => {
+  const dispatch = useDispatch();
+  const { hideModal } = useHideModal();
+  const validationSchema = Yup.object({
+    text: Yup.string().required('Text is required')
+  });
+  const formik = useFormik({
+    initialValues: {
+      text: ''
+    },
+    validationSchema,
+    onSubmit: (values, { setSubmitting }) => {
+      setSubmitting(true);
+      const formData = new FormData();
+      formData.append('text', values.text);
+      dispatch(editTask({ id, formData }, (res) => {
+        if (res) hideModal();
+      }));
+    }
+  });
+  return { formik };
+};
 
 export const useAddTask = () => {
   const dispatch = useDispatch();
@@ -68,19 +105,11 @@ export const toolTips = [
   {
     name: 'View',
     icon: 'pdf',
-    onClick: (pickupId, { history }) => {
-      history.push({
-        path: `/pickups/view/${pickupId}`,
-        title: 'View'
+    onClick: (id, { showBlured }) => {
+      showBlured({
+        title: 'Edit task',
+        body: () => <EditTask id={id} edit={edit} />
       });
-    }
-  },
-  {
-    name: 'Download as PDF',
-    icon: 'pdf',
-    onClick: () => {
-      // eslint-disable-next-line no-alert
-      alert('Download as PDF');
     }
   }
 ];

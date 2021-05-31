@@ -17,3 +17,9 @@ export const addTask = (payload, success) => ({
   payload,
   success
 });
+
+export const editTask = (payload, success) => ({
+  type: types.EDIT_TASKS,
+  payload,
+  success
+});

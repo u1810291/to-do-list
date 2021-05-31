@@ -186,7 +186,7 @@ export const MenuButton = styled.button`
 
 export const ToolTipOptionButton = styled.button`
   width: 100%;
-  height: 100%;
+  height: 25px;
   border: none;
   background: white;
   box-sizing: border-box;

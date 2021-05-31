@@ -5,7 +5,7 @@ import Tasks from '../../components/Tasks';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
 import {
-  useAddTask, header, headerToolTips, toolTips
+  useAddTask, header, toolTips, dataMaker
 } from './helper';
 import { notify } from '../../redux/modules/notifications/actions';
 import { fetchData } from '../../redux/modules/tasks/actions';
@@ -19,7 +19,7 @@ export default () => {
   const {
     data, loading, total, error, success
   } = useSelector((state) => state.tasksReducer);
-
+  const tasks = useMemo(() => dataMaker(data), [data]);
   const sortQuery = useMemo(() => {
     const found = sort && header.find(({ id }) => id === sort.id).accessor;
     return found
@@ -48,8 +48,7 @@ export default () => {
       <Tasks
         pageSize={pageSize}
         toolTips={toolTips}
-        headerToolTips={headerToolTips}
-        data={data}
+        data={tasks}
         stack={stack}
         setStack={setStack}
         total={total}
