@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-alert */
 import axios from 'axios';
 
@@ -15,7 +16,9 @@ service.interceptors.response.use(
   }
 );
 
-service.interceptors.request.use((config) => config);
-// const token = sessionStorage.getItem('token');
-// config.headers.Authorization = `Bearer ${token}`;
+service.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (typeof token === 'string' && config.method === 'post') config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 export { service };

@@ -4,7 +4,7 @@ import { dropdown } from '../style';
 export const Container = styled.div`
   display: flex;
   flex-direction:${({ end }) => (end ? 'column-reverse' : 'column')};
-  width: 200px;
+  width: 100%;
 
 `;
 
@@ -27,12 +27,12 @@ Selection.Text = styled.div`
   line-height: 24px;
   text-align: left;
   color: ${({ color }) => (color || '#0062FF')};
-  `;
+`;
+
 Selection.Icon = styled.div`
   margin-left: auto;
   svg{
     path{
-
       fill: #0062FF !important;
     }
   }
@@ -49,15 +49,15 @@ export const Menu = styled.div`
   background: #fff;
   overflow: hidden;
   box-shadow: 0px 25px 50px rgba(0, 0, 0, 0.1);
-  margin-bottom: ${({ end }) => (end ? '45px' : '0')};
-  margin-top: ${({ end }) => (end ? '0' : '45px')};
+  margin-bottom: 45px;
+  margin-top: 45px;
   z-index: 10;
 `;
 
 Menu.Item = styled.input`
   box-sizing: border-box;
   width: ${({ width }) => `${width}px`};
-  padding: 13px 24px;
+  padding: 20px 24px;
   cursor: pointer;
   outline: none;
   border: none;

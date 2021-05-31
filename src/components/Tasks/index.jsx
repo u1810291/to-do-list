@@ -5,6 +5,7 @@ import Table from '../Table';
 export default ({
   data,
   total,
+  toolTips,
   header,
   loading,
   setSort,
@@ -17,6 +18,7 @@ export default ({
     <Table
       data={data}
       total={total}
+      toolTips={toolTips}
       headers={header}
       loading={loading}
       setSort={setSort}
