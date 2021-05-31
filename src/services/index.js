@@ -16,9 +16,5 @@ service.interceptors.response.use(
   }
 );
 
-service.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token');
-  if (typeof token === 'string' && config.method === 'post') config.headers.Authorization = `Bearer ${token}`;
-  return config;
-});
+service.interceptors.request.use((config) => config);
 export { service };

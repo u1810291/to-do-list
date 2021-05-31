@@ -7,7 +7,7 @@ import {
   ToolTipOptionButton as OptionButton,
   ToolTipContent as Caption
 } from '../style';
-import { ReactComponent as Icons } from '../../../assets/icons/menu.svg';
+import { ReactComponent as Icons } from '../../../assets/icons/edit.svg';
 import { useShowModal } from '../../../hooks/modal';
 
 export default ({
@@ -28,7 +28,7 @@ export default ({
               })}
               key={`${positionIndex + 1}`}
             >
-              <Icons />
+              <Icons width="24px" height="24px" />
 
               <Caption>{name}</Caption>
             </OptionButton>

@@ -6,6 +6,8 @@ export const Container = styled.div`
   background: ${({ color }) => (color ? `${color.bg}` : '#FFF4DE')};
   color: ${({ color }) => (color ? `${color.text}` : '#FFA800')};
   border-radius: 4px;
+  word-break: break-all;
+  overflow: auto;
   text-align: center;
   border: none;
   cursor: pointer;

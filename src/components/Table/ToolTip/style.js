@@ -7,11 +7,9 @@ const isVisible = css`
 
 export const ToolTip = styled.div`
   width: 162px;
-  height: 148.6px;
   background: white;
   position: absolute;
-  top: -40px;
-  left: -98px;
+  left: -70px;
   z-index: 3;
   transition: 0.2s;
   border-radius: 8px;
@@ -28,7 +26,7 @@ export const ToolTip = styled.div`
     width: 18px;
     height: 18px;
     position: absolute;
-    top: 65px;
+    top: 14px;
     right: -4px;
     transform: rotate(45deg);
   }
