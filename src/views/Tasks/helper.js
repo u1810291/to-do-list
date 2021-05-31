@@ -62,10 +62,25 @@ export const header = [
   }
 ];
 
-export const headerToolTips = [
+export const headerToolTips = [{}];
+
+export const toolTips = [
   {
-    name: 'Excel',
-    icon: 'exel',
-    onClick: () => {}
+    name: 'View',
+    icon: 'pdf',
+    onClick: (pickupId, { history }) => {
+      history.push({
+        path: `/pickups/view/${pickupId}`,
+        title: 'View'
+      });
+    }
+  },
+  {
+    name: 'Download as PDF',
+    icon: 'pdf',
+    onClick: () => {
+      // eslint-disable-next-line no-alert
+      alert('Download as PDF');
+    }
   }
 ];

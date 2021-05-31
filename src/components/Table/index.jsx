@@ -19,10 +19,13 @@ import {
   Icon,
   TREmpty,
   CheckBox,
-  MenuButton
+  MenuButton,
+  MoreIcon
 } from './style';
 import Pagination from './Pagination';
 import Spinner from '../Spinner';
+import ToolTip from './ToolTip';
+import { ClickOutside } from '../../hooks/click-outside';
 
 const textClass = classNames(
   'button-large',
@@ -52,8 +55,6 @@ const CustomCheckbox = ({
   />
 );
 
-// toolTips = [{ name: String, icon: String, onClick: Function }]
-// HeaderToolTips = [{ name: String, icon: String, onClick: Function }]
 const CustomTable = ({
   toolTips,
   headerToolTips,
@@ -73,6 +74,9 @@ const CustomTable = ({
   const notCheckable = useMemo(() => !headerToolTips.length, [headerToolTips]);
   const noActions = useMemo(() => !toolTips.length, [toolTips]);
   const [pgCount, setPgCount] = useState(0);
+  const [open, setOpen] = useState(false); // Actions toolTip
+  const [TIndex, setTIndex] = useState(null); // For toolTip uniqueness
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -208,6 +212,24 @@ const CustomTable = ({
                             </Cell>
                           </TD>
                         ))}
+                        {
+                          toolTips && (
+                            <TD right>
+                              <ClickOutside outsideClicked={() => { setOpen(false); }}>
+                                <ToolTip
+                                  TIndex={TIndex}
+                                  index={index}
+                                  open={open}
+                                  toolTipData={toolTips}
+                                  id={row.id}
+                                  onClick={() => { setTIndex(index); setOpen(true); }}
+                                >
+                                  <MoreIcon />
+                                </ToolTip>
+                              </ClickOutside>
+                            </TD>
+                          )
+                        }
                       </TR>
                     </React.Fragment>
                   );

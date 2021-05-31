@@ -2,6 +2,8 @@ import styled, { css } from 'styled-components';
 import Scrollable from 'react-indiana-drag-scroll';
 import { PureCheckbox } from '../CheckBox';
 
+export { ReactComponent as MoreIcon } from '../../assets/icons/more.svg';
+
 const upArrowIcon = css`
   width: 0;
   height: 0;
@@ -30,7 +32,7 @@ const stickyTH = css`
   &:nth-child(1) {
     left: 0;
     position: sticky;
-    z-index: 20;
+    z-index: 2;
   }
   ${({ notCheckable }) => !notCheckable
     && `
@@ -45,7 +47,7 @@ const stickyTD = css`
   & td:nth-child(1) {
     position: sticky;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     background-color: white;
   }
   ${({ notCheckable }) => !notCheckable
@@ -53,7 +55,7 @@ const stickyTD = css`
       & td:nth-child(2) {
       position: sticky;
       left: var(--table-margin-first-element-sticky);
-      z-index: 1;
+      z-index: 2;
       background-color: white;
     }
   `}
@@ -180,4 +182,30 @@ export const MenuButton = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+export const ToolTipOptionButton = styled.button`
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: white;
+  box-sizing: border-box;
+  z-index: 2;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  &:hover {
+    background: #F8F8F8;
+  }
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const ToolTipContent = styled.span`
+  font-size: 12px;
+  min-height: 20px;
+  font-weight: var(--font-medium);
+  margin-left: 11px;
 `;

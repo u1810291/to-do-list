@@ -4,7 +4,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Tasks from '../../components/Tasks';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
-import { useAddTask, header, headerToolTips } from './helper';
+import {
+  useAddTask, header, headerToolTips, toolTips
+} from './helper';
 import { notify } from '../../redux/modules/notifications/actions';
 import { fetchData } from '../../redux/modules/tasks/actions';
 
@@ -40,12 +42,12 @@ export default () => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
     if (success) dispatch(notify({ message: success, icon: 'ok' }));
   }, [query, error, success]);
-
   return (
     <Container>
       <TasksHeader useAddTask={useAddTask} />
       <Tasks
         pageSize={pageSize}
+        toolTips={toolTips}
         headerToolTips={headerToolTips}
         data={data}
         stack={stack}
