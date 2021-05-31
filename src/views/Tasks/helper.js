@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -14,6 +15,16 @@ export const dataMaker = (data) => data.map(({
   status: {
     ...status,
     title: 'Update status',
+    name: status === 0 ? 'Not completed'
+      : status === 1 ? 'Not completed edited by admin'
+        : status === 10 ? 'Completed'
+          : status === 11 ? 'Completed and edited by admin' : '',
+    color: {
+      bg: status === 0 ? '#FF461E'
+        : status === 1 ? '#FFB11E'
+          : status === 10 ? '#32CC1D'
+            : status === 11 ? '#2448FE' : ''
+    },
     component: <UpdateStatus />
   }
 }));
@@ -70,6 +81,7 @@ export const useAddTask = () => {
 
   return { formik };
 };
+
 export const header = [
   {
     id: 1,
@@ -95,7 +107,8 @@ export const header = [
   {
     id: 5,
     Header: 'Status',
-    accessor: 'status'
+    accessor: 'status',
+    type: 'status'
   }
 ];
 

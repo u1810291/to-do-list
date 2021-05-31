@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import Tasks from '../../components/Tasks';
+import { headerMaker } from '../../components/Table/helper';
 import TasksHeader from '../../components/Headers/TasksHeader';
 import { Container } from './style';
 import {
@@ -26,6 +27,7 @@ export default () => {
       ? `sort_field=${found}&sort_direction=${sort.desc ? 'desc' : 'asc'}`
       : '';
   }, [sort]);
+  const headers = useMemo(() => headerMaker(header), [header]);
 
   const query = useMemo(
     () => `&page=${pageIndex}&${sortQuery}`,
@@ -52,7 +54,7 @@ export default () => {
         stack={stack}
         setStack={setStack}
         total={total}
-        header={header}
+        header={headers}
         loading={loading}
         setSort={setSort}
         onChange={handleOnChange}

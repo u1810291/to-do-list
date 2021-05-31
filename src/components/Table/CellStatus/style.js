@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 8px 12px;
-  width: 60px;
+  width: 110px;
   background: ${({ color }) => (color ? `${color.bg}` : '#FFF4DE')};
   color: ${({ color }) => (color ? `${color.text}` : '#FFA800')};
   border-radius: 4px;
@@ -13,7 +13,8 @@ export const Container = styled.div`
 
 export const Wrapper = styled.div`
   width: 270px;
-  /* left: -75px; */
+  left: 0px;
+  top: 60px; 
   border-radius: 8px;
   position: absolute;
   background: white;
