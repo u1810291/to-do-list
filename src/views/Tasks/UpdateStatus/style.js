@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const UpdateCell = styled.div`
+export const UpdateCell = styled.form`
   box-sizing: border-box;
   position: relative;
   display:flex;

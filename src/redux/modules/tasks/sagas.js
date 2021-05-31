@@ -50,7 +50,7 @@ function* addTasks({ payload, success }) {
 
 function* editTask({ payload, success }) {
   try {
-    const res = yield services.edit(payload);
+    const res = yield services.edit(payload.id, payload.data);
     if (res.data.status === 'error') {
       yield put(setError(Object.entries(res.data.message).join('\n')));
       yield put(setError(''));

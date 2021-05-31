@@ -8,6 +8,32 @@ import { useHideModal } from '../../hooks';
 import EditTask from '../../components/Tasks/EditTask';
 import UpdateStatus from './UpdateStatus';
 
+const edit = (id) => {
+  const dispatch = useDispatch();
+  const { hideModal } = useHideModal();
+  const validationSchema = Yup.object({
+    text: Yup.string(),
+    status: Yup.number()
+  });
+  const formik = useFormik({
+    initialValues: {
+      text: '',
+      status: undefined
+    },
+    validationSchema,
+    onSubmit: (values, { setSubmitting }) => {
+      setSubmitting(true);
+      const formData = new FormData();
+      if (values.text) formData.append('text', values.text);
+      if (values.status) formData.append('status', values.status);
+      dispatch(editTask({ id, formData }, (res) => {
+        if (res) hideModal();
+      }));
+    }
+  });
+  return { formik };
+};
+
 export const dataMaker = (data) => data.map(({
   status, ...rest
 }) => ({
@@ -25,33 +51,9 @@ export const dataMaker = (data) => data.map(({
           : status === 10 ? '#32CC1D'
             : status === 11 ? '#2448FE' : ''
     },
-    component: <UpdateStatus />
+    component: <UpdateStatus edit={edit} id={rest.id} />
   }
 }));
-
-const edit = (id) => {
-  const dispatch = useDispatch();
-  const { hideModal } = useHideModal();
-  const validationSchema = Yup.object({
-    text: Yup.string().required('Text is required')
-  });
-  const formik = useFormik({
-    initialValues: {
-      text: ''
-    },
-    validationSchema,
-    onSubmit: (values, { setSubmitting }) => {
-      setSubmitting(true);
-      const formData = new FormData();
-      formData.append('text', values.text);
-      dispatch(editTask({ id, formData }, (res) => {
-        if (res) hideModal();
-      }));
-    }
-  });
-  return { formik };
-};
-
 export const useAddTask = () => {
   const dispatch = useDispatch();
   const { hideModal } = useHideModal();
@@ -116,8 +118,7 @@ export const headerToolTips = [{}];
 
 export const toolTips = [
   {
-    name: 'View',
-    icon: 'pdf',
+    name: 'Edit',
     onClick: (id, { showBlured }) => {
       showBlured({
         title: 'Edit task',
