@@ -44,9 +44,9 @@ export const dataMaker = (data) => data.map(({
     ...status,
     title: 'Update status',
     name: status === 0 ? 'Not completed'
-      : status === 1 ? 'Not completed, but edited by admin'
+      : status === 1 ? 'Edited by admin'
         : status === 10 ? 'Completed'
-          : status === 11 ? 'Completed and edited by admin' : '',
+          : status === 11 ? 'Completed by admin' : '',
     color: {
       bg: status === 0 ? '#FF461E'
         : status === 1 ? '#FFB11E'
