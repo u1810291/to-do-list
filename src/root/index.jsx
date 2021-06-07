@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import store from '../redux/store';
 import App from '../containers/App';
 import Modal from '../components/Modals/Blured';
+import FullPage from '../components/Modals/FullPage';
 import Notification from '../components/Notification';
 
 export default () => (
@@ -12,6 +13,7 @@ export default () => (
     <Router>
       <App />
       <Modal />
+      <FullPage />
       <Notification />
     </Router>
   </Provider>

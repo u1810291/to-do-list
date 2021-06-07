@@ -17,8 +17,11 @@ import { Content } from '../style';
 import { logout } from '../../../redux/modules/auth/actions';
 import { ClickOutside } from '../../../hooks/click-outside';
 import { DynamicImage } from '../../DynamicImage';
+import { useShowModal } from '../../../hooks/modal';
+import SignIn from '../../../views/Auth/SignIn';
 
 export default () => {
+  const { showFullScreen } = useShowModal();
   const clickRef = useRef(null);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -34,6 +37,13 @@ export default () => {
       setIsOpen(false);
       dispatch(logout());
       history.go('/signin');
+      break;
+    case 'login':
+      setIsOpen(false);
+      showFullScreen({
+        title: 'Sign In',
+        body: SignIn
+      });
       break;
     default:
       break;
@@ -65,7 +75,7 @@ export default () => {
                 <Item onClick={() => handleOnClick('tasks')}>
                   <Text className={classNames('caption', 'weight-semibold', 'text-black-800')}>Tasks</Text>
                 </Item>
-                <Item onClick={() => handleOnClick('logout')}>
+                <Item onClick={() => (token ? handleOnClick('logout') : handleOnClick('login'))}>
                   <Text className={classNames('caption', 'weight-semibold', 'text-black-800')}>{token ? 'Log out' : 'Log in'}</Text>
                 </Item>
               </DropdownContainer>
