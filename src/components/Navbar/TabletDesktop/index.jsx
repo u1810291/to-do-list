@@ -23,6 +23,7 @@ export default () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
+  const token = localStorage.getItem('token');
   const handleOnClick = (type) => {
     switch (type) {
     case 'tasks':
@@ -65,7 +66,7 @@ export default () => {
                   <Text className={classNames('caption', 'weight-semibold', 'text-black-800')}>Tasks</Text>
                 </Item>
                 <Item onClick={() => handleOnClick('logout')}>
-                  <Text className={classNames('caption', 'weight-semibold', 'text-black-800')}>Log out</Text>
+                  <Text className={classNames('caption', 'weight-semibold', 'text-black-800')}>{token ? 'Log out' : 'Log in'}</Text>
                 </Item>
               </DropdownContainer>
             </ClickOutside>
