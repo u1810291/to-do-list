@@ -6,6 +6,8 @@ import { Container, Content } from './style';
 import childRoutes from '../../routes/main-routes';
 import Navbar from '../Navbar';
 
+// eslint-disable-next-line max-len
+// const matchedPath = window.location.pathname.split('/')[window.location.pathname.split('/').length - 1];
 export default () => (
   <Container>
     <Navbar />
@@ -35,7 +37,8 @@ export default () => (
         ) : (
           <Route key={`${index + 1}`} path={path} component={component} />
         ))) : ''}
-      <Redirect from="*" to="/tasks" />
+      {childRoutes && !childRoutes.find((el) => el.path === `/${window.location.pathname.split('/')[window.location.pathname.split('/').length - 1]}`)
+        ? <Redirect from="*" to="/tasks" /> : ''}
     </Content>
   </Container>
 );

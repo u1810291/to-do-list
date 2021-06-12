@@ -24,7 +24,8 @@ const map = {
     success: payload
   }),
   [types.AUTH_SET_TOKEN]: (state, { payload }) => {
-    localStorage.setItem('token', payload.token);
+    const reverseToken = payload.token.split('').reverse().join('');
+    localStorage.setItem('token', reverseToken);
     return {
       ...state,
       token: payload

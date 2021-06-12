@@ -24,7 +24,7 @@ export const useHandleSubmit = () => {
       formData.append('password', values.password);
       dispatch(login(formData, (res) => {
         setSubmitting(false);
-        if (res) history.go('/');
+        if (res) history.go('/tasks');
       }));
     }
   });

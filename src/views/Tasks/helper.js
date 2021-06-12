@@ -24,7 +24,7 @@ const edit = (id) => {
     onSubmit: (values, { setSubmitting }) => {
       setSubmitting(true);
       const formData = new FormData();
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem('token') && localStorage.getItem('token').split('').reverse().join('');
       formData.append('token', token);
       if (values.text) formData.append('text', values.text);
       if (values.status) formData.append('status', parseInt(values.status, 10));
@@ -43,6 +43,7 @@ export const dataMaker = (data) => data.map(({
   status: {
     ...status,
     title: 'Update status',
+    // TODO for best practice these information should come from backend
     name: status === 0 ? 'Not completed'
       : status === 1 ? 'Edited by admin'
         : status === 10 ? 'Completed'
