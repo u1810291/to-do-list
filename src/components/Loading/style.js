@@ -22,7 +22,7 @@ const box2 = keyframes`
     50% {
         transform: translate(0, 0);
     }
-    100% {
+    100% {  
         transform: translate(100%, 0);
     }
 `;
