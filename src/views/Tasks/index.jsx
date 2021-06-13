@@ -16,7 +16,6 @@ export default () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageSize, setPageSize] = useState(0);
   const [sort, setSort] = useState();
-  const [stack, setStack] = useState([]);
   const {
     data, loading, total, error, success
   } = useSelector((state) => state.tasksReducer);
@@ -44,6 +43,7 @@ export default () => {
     if (error) dispatch(notify({ message: error, icon: 'cross' }));
     if (success) dispatch(notify({ message: success, icon: 'ok' }));
   }, [query, error, success]);
+
   return (
     <Container>
       <TasksHeader useAddTask={useAddTask} />
@@ -51,8 +51,6 @@ export default () => {
         pageSize={pageSize}
         toolTips={toolTips}
         data={tasks}
-        stack={stack}
-        setStack={setStack}
         total={total}
         header={headers}
         loading={loading}
