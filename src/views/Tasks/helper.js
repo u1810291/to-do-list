@@ -30,6 +30,7 @@ const edit = (id) => {
       if (values.status) formData.append('status', parseInt(values.status, 10));
       dispatch(editTask({ id, formData }, (res) => {
         if (res) hideModal();
+        setSubmitting(false);
       }));
     }
   });
@@ -57,6 +58,7 @@ export const dataMaker = (data) => data.map(({
     component: <UpdateStatus edit={edit} id={rest.id} />
   }
 }));
+
 export const useAddTask = () => {
   const dispatch = useDispatch();
   const { hideModal } = useHideModal();
@@ -80,6 +82,7 @@ export const useAddTask = () => {
       formData.append('text', values.description);
       dispatch(addTask(formData, (success) => {
         if (success) hideModal();
+        setSubmitting(false);
       }));
     }
   });

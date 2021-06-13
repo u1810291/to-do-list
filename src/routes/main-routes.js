@@ -1,10 +1,10 @@
-import Dashboard from '../views/Tasks';
+import Tasks from '../views/Tasks';
 
 export default [
   {
     exact: true,
     path: '/tasks',
-    component: Dashboard,
+    component: Tasks,
     icon: 'tasks',
     title: 'Tasks',
     children: []
